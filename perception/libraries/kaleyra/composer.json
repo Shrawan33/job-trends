@@ -1,0 +1,27 @@
+{
+    "name": "perception/kaleyra",
+    "description": "kaleyra package for sending sms",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Digant Shah",
+            "email": "digant@perceptionsystem.in"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Perception\\Libraries\\Kaleyra\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Perception\\Libraries\\Kaleyra\\KaleyraServiceProvider"
+            ],
+            "aliases": {
+                "Kaleyra": "Perception\\Libraries\\Kaleyra\\Facades\\Kaleyra"
+            }
+        }
+    }
+}

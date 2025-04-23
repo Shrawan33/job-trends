@@ -1,0 +1,187 @@
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+.top-left.links {
+    position: absolute;
+    left: 80px;
+    top: 20px;
+}
+select.language {
+    padding: 10px;
+}
+.background{
+    background: url(http://localhost/jobiclue-laravel/public/img/bg.jpg);
+    height: 450px;
+    margin-bottom: 2%;
+}
+.background .title {
+    font-size: 84px;
+    color: #ffffff;
+    margin-top: 8%;
+    font-weight: 900;
+}
+.background .m-b-md p{
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.category h5{
+    font-weight: 900;
+    /* color:#000; */
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.category .col-md-3{
+    padding: 20px;
+    text-align: left;
+}
+.category .col-md-3:hover{
+    box-shadow: 5px 5px 5px 10px #d4d1d16b;
+    color: rgba(245, 100, 33, 0.993) !important ;
+}
+.job-section .col-md-6 {
+    text-align: left;
+    margin-top: 20px;
+    border: 2px solid;
+    padding: 25px;
+    color:#ffffff;
+}
+.job-section .col-md-6 h3{
+    font-weight: 900;
+}
+.job-section .col-md-6 a{
+    padding: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color:#ffffff;
+}
+.recent-jobs{
+    margin: 20px 0 20px 0px;
+}
+.recent-jobs table tr {
+    border-bottom: 1px solid #ccc;
+    padding: 25px;
+}
+.recent-jobs table td a{
+    border: 1px solid rgba(245, 100, 33, 0.993);
+    color:rgba(245, 100, 33, 0.993);
+     padding:10px;
+}
+.recent-jobs table td .fa-map-marker{
+    color:rgba(245, 100, 33, 0.993);
+}
+.recent-jobs table td h4{
+    font-weight: 900;
+    text-align: left;
+    text-transform: uppercase;
+}
+.recent-jobs table td p{
+    text-align: left;
+}
+
+.recent-jobs table tr:hover, .recent-jobs table tr:active, .recent-jobs table tr:focus{
+    box-shadow: 5px 5px 5px 10px #d4d1d16b;
+}
+.recent-jobs table td a:hover, .recent-jobs table td a:active, .recent-jobs table td a:focus,.top-companies .list a:hover{
+    background:rgba(245, 100, 33, 0.993);
+    color:#ffffff;
+    font-weight: 900;;
+}
+.top-companies .list a{
+    border: 1px solid rgba(245, 100, 33, 0.993);
+    color:rgba(245, 100, 33, 0.993);
+     padding:10px;
+}
+.top-companies span{
+    display: block;
+    margin: 15px;
+}
+.top-companies .list .col-md-2{
+    padding: 15px;
+    margin: 1%;
+}
+.top-companies .list .col-md-2:hover, .top-companies .list .col-md-2:active{
+    box-shadow: 5px 5px 5px 10px #d4d1d16b;
+}
+.about{
+    margin-top: 5%;
+}
+.about .row.head{
+    display: block;
+    text-align: center;
+}
+.about .row.head h2{
+font-weight: 900;
+}
+.about-item .col-md-6{
+    float: left;
+    padding: 50px;
+}
+.about-item .col-md-6 span i{
+    font-size: 60px;
+}
+.quick_search{
+    text-align: left;
+}
+.select-control select{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

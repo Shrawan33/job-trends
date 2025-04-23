@@ -1,0 +1,161 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?1ccab92a6cb73eeb469e451a708b24df") format("truetype"),
+url("./flaticon.woff?1ccab92a6cb73eeb469e451a708b24df") format("woff"),
+url("./flaticon.woff2?1ccab92a6cb73eeb469e451a708b24df") format("woff2"),
+url("./flaticon.eot?1ccab92a6cb73eeb469e451a708b24df#iefix") format("embedded-opentype"),
+url("./flaticon.svg?1ccab92a6cb73eeb469e451a708b24df#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-lock:before {
+    content: "\f101";
+}
+.flaticon-envelope:before {
+    content: "\f102";
+}
+.flaticon-phone-call:before {
+    content: "\f103";
+}
+.flaticon-share:before {
+    content: "\f104";
+}
+.flaticon-flag:before {
+    content: "\f105";
+}
+.flaticon-linkedin:before {
+    content: "\f106";
+}
+.flaticon-facebook:before {
+    content: "\f107";
+}
+.flaticon-check:before {
+    content: "\f108";
+}
+.flaticon-star:before {
+    content: "\f109";
+}
+.flaticon-tie:before {
+    content: "\f10a";
+}
+.flaticon-user:before {
+    content: "\f10b";
+}
+.flaticon-dollar:before {
+    content: "\f10c";
+}
+.flaticon-info:before {
+    content: "\f10d";
+}
+.flaticon-close:before {
+    content: "\f10e";
+}
+.flaticon-file:before {
+    content: "\f10f";
+}
+.flaticon-trash:before {
+    content: "\f110";
+}
+.flaticon-twitter:before {
+    content: "\f111";
+}
+.flaticon-placeholder:before {
+    content: "\f112";
+}
+.flaticon-google-glass-logo:before {
+    content: "\f113";
+}
+.flaticon-like:before {
+    content: "\f114";
+}
+.flaticon-plus:before {
+    content: "\f115";
+}
+.flaticon-cancel:before {
+    content: "\f116";
+}
+.flaticon-ellipsis:before {
+    content: "\f117";
+}
+.flaticon-left-arrow:before {
+    content: "\f118";
+}
+.flaticon-briefcase:before {
+    content: "\f119";
+}
+.flaticon-heart:before {
+    content: "\f11a";
+}
+.flaticon-search:before {
+    content: "\f11b";
+}
+.flaticon-money:before {
+    content: "\f11c";
+}
+.flaticon-dollar-note:before {
+    content: "\f11d";
+}
+.flaticon-bell:before {
+    content: "\f11e";
+}
+.flaticon-double-tick:before {
+    content: "\f11f";
+}
+.flaticon-tasks:before {
+    content: "\f120";
+}
+.flaticon-arrow-right:before {
+    content: "\f121";
+}
+.flaticon-arrow-left:before {
+    content: "\f122";
+}
+.flaticon-pin:before {
+    content: "\f123";
+}
+.flaticon-call:before {
+    content: "\f124";
+}
+.flaticon-email:before {
+    content: "\f125";
+}
+.flaticon-check-1:before {
+    content: "\f126";
+}
+.flaticon-document:before {
+    content: "\f127";
+}
+.flaticon-magnet:before {
+    content: "\f128";
+}
+.flaticon-hand-shake:before {
+    content: "\f129";
+}
+.flaticon-thumb-up:before {
+    content: "\f12a";
+}
+.flaticon-question:before {
+    content: "\f12b";
+}
+.flaticon-setting-lines:before {
+    content: "\f12c";
+}
+.flaticon-cancel-1:before {
+    content: "\f12d";
+}
+.flaticon-subscription:before {
+    content: "\f12e";
+}
+.flaticon-send:before {
+    content: "\f12f";
+}

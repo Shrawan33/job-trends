@@ -1,0 +1,59 @@
+{
+    "name": "Perceptionsystem/ccavenuepayment",
+    "version": "1.0.0",
+    "description": "Laravel Package for CCAvenue Payment Gateway ",
+    "authors": [
+        {
+            "name": "Digant Shah",
+            "email": "digant@perceptionsystem.in"
+        },
+        {
+            "name": "Subash Rijal",
+            "email": "subash@perceptionsystem.in"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.0|~6.0",
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=5.4.3",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ],
+        "psr-4": {
+            "Perception\\Libraries\\Payment\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Perception\\Libraries\\Payment\\": "tests"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../../perception/library/payment"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Perception\\Libraries\\Payment\\PaymentServiceProvider"
+            ],
+            "aliases": {
+                "PaymentFacade": "Perception\\Libraries\\Payment\\Facades\\PaymentFacade"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+}

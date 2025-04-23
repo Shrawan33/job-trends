@@ -1,0 +1,103 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2.5|^8.0",
+        "arrilot/laravel-widgets": "^3.13",
+        "barryvdh/laravel-snappy": "^0.4.8",
+        "doctrine/dbal": "~2.3",
+        "erusev/parsedown": "^1.7",
+        "fideloper/proxy": "^4.4",
+        "firebase/php-jwt": "^5.2",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "infyomlabs/adminlte-templates": "^2.0",
+        "infyomlabs/laravel-generator": "7.0.x-dev",
+        "intervention/image": "^2.5",
+        "ixudra/curl": "^6.22",
+        "jorenvanhocht/laravel-share": "^4.2",
+        "lab404/laravel-impersonate": "1.6",
+        "laravel/framework": "^7.29",
+        "laravel/installer": "^4.2",
+        "laravel/passport": "^9.0",
+        "laravel/scout": "^8.6",
+        "laravel/socialite": "^5.2",
+        "laravel/telescope": "^3.5",
+        "laravel/tinker": "^2.6",
+        "laravel/ui": "^2.0",
+        "laravelcollective/html": "^6.1",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "maatwebsite/excel": "^3.1",
+        "meilisearch/meilisearch-laravel-scout": "^0.12.5",
+        "plivo/plivo-php": "^4.21",
+        "razorpay/razorpay": "2.*",
+        "spatie/laravel-medialibrary": "^7.0.0",
+        "spatie/laravel-permission": "^3.11",
+        "twilio/sdk": "^6.18",
+        "webpatser/laravel-countries": "dev-master",
+        "yajra/laravel-datatables-buttons": "^4.0",
+        "yajra/laravel-datatables-html": "^4.0",
+        "yajra/laravel-datatables-oracle": "~9.0"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.0",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.3.1",
+        "nunomaduro/collision": "^4.3",
+        "phpunit/phpunit": "^8.5.8|^9.3.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Perception\\Libraries\\Html\\Builder\\": "perception/libraries/html/builder",
+            "Perception\\Libraries\\Twilio\\": "perception/libraries/twilio/src",
+            "Perception\\Libraries\\Kaleyra\\": "perception/libraries/kaleyra/src",
+            "Perception\\Libraries\\Payment\\": "perception/libraries/payment/src",
+            "Perception\\Libraries\\Meilisearch\\Php\\": "perception/libraries/meilisearch/php"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

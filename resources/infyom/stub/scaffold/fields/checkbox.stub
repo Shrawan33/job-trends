@@ -1,0 +1,6 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6">
+    {!! Form::hidden('$FIELD_NAME$', 0, ['class' => 'form-check-input']) !!}
+    {!! Form::checkbox('$FIELD_NAME$', '$CHECKBOX_VALUE$', null, ['class' => 'form-check-input', 'id' => '$FIELD_NAME$', 'label' => '$FIELD_NAME_TITLE$']) !!}
+    <span class="help-block"></span>
+</div>

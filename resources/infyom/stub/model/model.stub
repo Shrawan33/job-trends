@@ -1,0 +1,48 @@
+<?php
+
+namespace $NAMESPACE_MODEL$;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\CreatedByUpdatedBy;
+use App\Traits\ModelState;
+use App\Traits\ToSqlDate;
+$SOFT_DELETE_IMPORT$
+$DOCS$
+class $MODEL_NAME$ extends Model
+{
+    use CreatedByUpdatedBy;
+    use ModelState;
+    use ToSqlDate;
+$SOFT_DELETE$
+    public $table = '$TABLE_NAME$';
+    $TIMESTAMPS$
+$SOFT_DELETE_DATES$
+$CONNECTION$
+$PRIMARY$
+    public $fillable = [
+        $FIELDS$,
+        'is_deleted',
+        'created_by',
+        'updated_by'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        $CAST$
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        $RULES$
+    ];
+
+    $RELATIONS$
+}

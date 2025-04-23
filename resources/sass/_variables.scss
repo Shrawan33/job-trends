@@ -1,0 +1,157 @@
+* {
+    font-family: "Satoshi";
+}
+
+// Typography
+$font-size-base: 0.875rem;
+$line-height-base: 1.4;
+
+// Colors
+$blue: #007bff;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$yellow: #ffed4a;
+$green: #5bb200;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$primary-color: #357de8;
+$secondary-color: #ff7d57;
+$metal: #717884;
+$gray: #838383;
+$black: #000;
+$light_black: #1b2432;
+$bg-light: #f1f6fd;
+$white: #fff;
+$danger: #f00404;
+$divider: #c3c3c3;
+$body-text: #777777;
+$heading-text: #272729;
+$text-mute: #9197a1;
+$font-size-sm: 14px;
+$font-size-base-lg: 18px;
+$success-color: #36951e;
+$theme-colors: (
+    "primary": $primary-color,
+    "secondary": $secondary-color,
+    "success": $success-color,
+    "metal": $metal,
+    "gray": $gray,
+    "black": $black,
+    "danger": $danger
+);
+
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret: true !default;
+$enable-rounded: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-prefers-reduced-motion-media-query: true !default;
+$enable-hover-media-query: false !default; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes: true !default;
+$enable-pointer-cursor-for-buttons: true !default;
+$enable-print-styles: true !default;
+$enable-responsive-font-sizes: true !default;
+$enable-validation-icons: true !default;
+$enable-deprecation-messages: true !default;
+
+$body-color: $body-text !default;
+$headings-color: $heading-text !default;
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: 900 !default;
+// $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+// $h1-font-size: $font-size-base * 3 !default;
+// $h2-font-size: $font-size-base * 2 !default;
+// $h3-font-size: $font-size-base * 1.42 !default;
+// $h4-font-size: $font-size-base * 1.2 !default;
+// $h5-font-size: $font-size-base * 1 !default;
+// $h6-font-size: $font-size-base !default;
+
+// // scss-docs-start display-headings
+// $display-font-sizes: (
+//     1: 5rem,
+//     2: 4.5rem,
+//     3: 4rem,
+//     4: 3.5rem,
+//     5: 3rem,
+//     6: 2.5rem
+// ) !default;
+
+$fontsize: (
+    10: 10px,
+    11: 11px,
+    12: 12px,
+    13: 13px,
+    14: 14px,
+    15: 15px,
+    16: 16px,
+    17: 17px,
+    18: 18px,
+    20: 20px,
+    22: 22px,
+    24: 24px,
+    28: 28px,
+    30: 30px,
+    36: 36px,
+    46: 46px
+);
+
+$spacers: (
+    0: 0,
+    5: 5px,
+    10: 10px,
+    12: 12px,
+    14: 14px,
+    15: 15px,
+    18: 18px,
+    20: 20px,
+    22: 22px,
+    24: 24px,
+    25: 25px,
+    30: 30px,
+    35: 35px,
+    40: 40px,
+    45: 45px,
+    50: 50px,
+    55: 55px,
+    60: 60px,
+    70: 70px,
+    80: 80px,
+    90: 90px,
+    100: 100px,
+    110: 110px,
+    120: 120px,
+    130: 130px,
+    140: 140px,
+    150: 150px,
+    160: 160px,
+    170: 170px,
+    200: 200px,
+    250: 250px,
+    260: 260px,
+    300: 300px
+);
+
+$input-border-color: $divider !default;
+
+$input-btn-focus-width: 0rem !default;
+$input-btn-padding-y: 0.8rem !default;
+$input-btn-padding-x: 1rem !default;
+$input-btn-padding-lg-x: 1.5rem !default;
+// $input-btn-font-size: $font-size-base !default;
+// $btn-font-size: $input-btn-font-size !default;
+
+$input-btn-padding-y-sm: 0.5rem !default;
+$input-btn-padding-x-sm: 1.2rem !default;
+// $input-btn-font-size-sm: $font-size-sm !default;
+$btn-padding-y-sm: $input-btn-padding-y-sm !default;
+$btn-padding-x-sm: $input-btn-padding-x-sm !default;
+// $btn-font-size-sm: $input-btn-font-size-sm !default;
+$btn-border-width: 1px !default;

@@ -1,0 +1,162 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$;
+
+use $NAMESPACE_REQUEST$\CreateUserRequest;
+use $NAMESPACE_REQUEST$\UpdateUserRequest;
+use $NAMESPACE_REPOSITORY$\UserRepository;
+use $NAMESPACE_CONTROLLER$\AppBaseController;
+use Illuminate\Http\Request;
+use Flash;
+use Response;
+use Hash;
+
+class UserController extends AppBaseController
+{
+    /** @var $repository UserRepository */
+    private $repository;
+
+    public function __construct(UserRepository $userRepo)
+    {
+        $this->repository = $userRepo;
+        $this->getEntity();
+    }
+
+    /**
+     * Display a listing of the User.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $users = $this->repository->all();
+
+        return view($this->entity['view'] . '.index')->with('users', $users);
+    }
+
+    /**
+     * Show the form for creating a new User.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view($this->entity['view'] . '.create');
+    }
+
+    /**
+     * Store a newly created User in storage.
+     *
+     * @param CreateUserRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateUserRequest $request)
+    {
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $user = $this->repository->create($input);
+
+        Flash::success($this->entity['singular'] . ' saved successfully.');
+
+        return redirect(route($this->entity['url'] . '.index'));
+    }
+
+    /**
+     * Display the specified User.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $user = $this->repository->find($id);
+
+        if (empty($user)) {
+            Flash::error($this->entity['singular'] . ' not found');
+
+            return redirect(route($this->entity['url'] . '.index'));
+        }
+
+        return view($this->entity['view'] . '.show')->with('user', $user);
+    }
+
+    /**
+     * Show the form for editing the specified User.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $user = $this->repository->find($id);
+
+        if (empty($user)) {
+            Flash::error($this->entity['singular'] . ' not found');
+
+            return redirect(route($this->entity['url'] . '.index'));
+        }
+
+        return view($this->entity['view'] . '.edit')->with('user', $user);
+    }
+
+    /**
+     * Update the specified User in storage.
+     *
+     * @param int $id
+     * @param UpdateUserRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateUserRequest $request)
+    {
+        $user = $this->repository->find($id);
+
+        if (empty($user)) {
+            Flash::error($this->entity['singular'] . ' not found');
+
+            return redirect(route($this->entity['url'] . '.index'));
+        }
+        $input =  $request->all();
+        if (!empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            unset($input['password']);
+        }
+        $user = $this->repository->update($input, $id);
+
+        Flash::success($this->entity['singular'] . ' updated successfully.');
+
+        return redirect(route($this->entity['url'] . '.index'));
+    }
+
+    /**
+     * Remove the specified User from storage.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $user = $this->repository->find($id);
+
+        if (empty($user)) {
+            Flash::error($this->entity['singular'] . ' not found');
+
+            return redirect(route($this->entity['url'] . '.index'));
+        }
+
+        $this->repository->delete($id);
+
+        Flash::success($this->entity['singular'] . ' deleted successfully.');
+
+        return redirect(route($this->entity['url'] . '.index'));
+    }
+}

@@ -1,0 +1,27 @@
+@extends('layouts.admin')
+
+@section('content')
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1>{!! __('label.edit_banner') !!}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="content px-3">
+        @include('adminlte-templates::common.errors')
+        <div class="card">
+            {!! Form::model($banner, ['route' => [$entity['url'].'.update', $banner->id], 'method' => 'patch', 'id' => 'frm_'.$entity['targetModel']]) !!}
+            <div class="card-body">
+                @include($entity['view'].'.fields')
+            </div>
+            <div class="card-footer text-right">
+                @include('components.form-buttons')
+            </div>
+            {!! Form::close() !!}
+        </div>
+
+    </div>
+@endsection

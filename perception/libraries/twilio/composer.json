@@ -1,0 +1,31 @@
+{
+    "name": "perception/twilio",
+    "description": "twilio package for sending sms",
+    "type": "library",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Yusuf Kapasi",
+            "email": "yusufi@perceptionsystem.in"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "twilio/sdk": "^6.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "Perception\\Libraries\\Twilio\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Perception\\Libraries\\Twilio\\TwilioServiceProvider"
+            ],
+            "aliases": {
+                "Twilio": "Perception\\Libraries\\Twilio\\Facades\\Twilio"
+            }
+        }
+    }
+}

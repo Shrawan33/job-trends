@@ -1,0 +1,154 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$;
+
+use $NAMESPACE_DATATABLES$\$MODEL_NAME$DataTable;
+use $NAMESPACE_REQUEST$;
+use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
+use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
+use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
+use Laracasts\Flash\Flash;
+use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
+use Response;
+use Throwable;
+
+class $MODEL_NAME$Controller extends AppBaseController
+{
+    /** @var  $repository */
+    public $repository;
+
+    public function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
+    {
+        $this->repository = $$MODEL_NAME_CAMEL$Repo;
+        $this->getEntity();
+    }
+
+    /**
+     * Display a listing of the $MODEL_NAME$.
+     *
+     * @param $MODEL_NAME$DataTable $$MODEL_NAME_CAMEL$DataTable
+     * @return Response
+     */
+    public function index($MODEL_NAME$DataTable $$MODEL_NAME_CAMEL$DataTable)
+    {
+        return $$MODEL_NAME_CAMEL$DataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity]);
+    }
+
+    /**
+     * Show the form for creating a new $MODEL_NAME$.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        try {
+            return view($this->entity['view'] . '.create', ['entity' => $this->entity]);
+        } catch (Throwable $e) {
+            Flash::error($e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Store a newly created $MODEL_NAME$ in storage.
+     *
+     * @param Create$MODEL_NAME$Request $request
+     *
+     * @return Response
+     */
+    public function store(Create$MODEL_NAME$Request $request)
+    {
+        try {
+            $input = $request->all();
+
+            $$MODEL_NAME_CAMEL$ = $this->repository->create($input);
+
+            Flash::success($this->entity['singular'] . ' saved successfully.');
+
+            return redirect(route($this->entity['url'] . '.index'));
+        } catch (Throwable $e) {
+            Flash::error($e->getMessage());
+            return redirect()->back()->withInput($request->all());
+        }
+    }
+
+    /**
+     * Display the specified $MODEL_NAME$.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        try {
+            $$MODEL_NAME_CAMEL$ = $this->repository->find($id, ['*'], true);
+
+            if (empty($$MODEL_NAME_CAMEL$)) {
+                Flash::error($this->entity['singular'] . ' not found');
+
+                return redirect(route($this->entity['url'] . '.index'));
+            }
+
+            return view($this->entity['view'] . '.show', ['$MODEL_NAME_CAMEL$' => $$MODEL_NAME_CAMEL$, 'entity' => $this->entity]);
+        } catch (Throwable $e) {
+            Flash::error($e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Show the form for editing the specified $MODEL_NAME$.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        try {
+            $$MODEL_NAME_CAMEL$ = $this->repository->find($id, ['*'], true);
+
+            if (empty($$MODEL_NAME_CAMEL$)) {
+                Flash::error($this->entity['singular'] . ' not found');
+
+                return redirect(route($this->entity['url'] . '.index'));
+            }
+
+            return view($this->entity['view'] . '.edit', ['$MODEL_NAME_CAMEL$' => $$MODEL_NAME_CAMEL$, 'entity' => $this->entity]);
+        } catch (Throwable $e) {
+            Flash::error($e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Update the specified $MODEL_NAME$ in storage.
+     *
+     * @param  int              $id
+     * @param Update$MODEL_NAME$Request $request
+     *
+     * @return Response
+     */
+    public function update($id, Update$MODEL_NAME$Request $request)
+    {
+        try {
+            $$MODEL_NAME_CAMEL$ = $this->repository->find($id, ['*'], true);
+
+            if (empty($$MODEL_NAME_CAMEL$)) {
+                Flash::error($this->entity['singular'] . ' not found');
+
+                return redirect(route($this->entity['url'] . '.index'));
+            }
+
+            $$MODEL_NAME_CAMEL$ = $this->repository->update($request->all(), $id, true);
+
+            Flash::success($this->entity['singular'] . ' updated successfully.');
+
+            return redirect(route($this->entity['url'] . '.index'));
+        } catch (Throwable $e) {
+            Flash::error($e->getMessage());
+            return redirect()->back()->withInput($request->all());
+        }
+    }
+}

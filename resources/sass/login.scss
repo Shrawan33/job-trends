@@ -1,0 +1,56 @@
+.login-form{
+    border:1px solid $divider;
+    max-width: 480px;
+    margin: 0 auto;
+} 
+.facebook-icon{
+    width:55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #4267B2;
+    font-size: 24px;
+    i[class^=flaticon-]:before, i[class*=" flaticon-"]:before{
+        line-height: 55px;
+    }
+} 
+.facebook-icon:hover,.facebook-icon:focus{
+    color: #fff;
+}
+.linkedin-icon{
+    width:55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #2C80C2;
+    font-size: 24px;
+    i[class^=flaticon-]:before, i[class*=" flaticon-"]:before{
+        line-height: 55px;
+    }
+}
+.linkedin-icon:hover,.linkedin-icon:focus{
+    color: #fff;
+}
+.google-icon{
+    width:55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #DB4437;
+    font-size: 24px;
+    i[class^=flaticon-]:before, i[class*=" flaticon-"]:before{
+        line-height: 55px;
+    }
+}
+.google-icon:hover,.google-icon:focus{
+    color: #fff;
+}

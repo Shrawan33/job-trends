@@ -1,0 +1,113 @@
+.img-container {
+    margin-bottom: 1rem;
+    max-height: 497px;
+    min-height: 200px;
+    width: 100%;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+.img-container > img {
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
+    max-height: 499px;
+}
+.preview {
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    margin: 0 0 0 15px;
+}
+.mb-15 {
+    margin-bottom: 10px;
+    background: #ccc;
+    width: 100%;
+    position: relative;
+    left: 8%;
+    padding: 5px 0;
+}
+.cropper-size-text {
+    text-align: right;
+    padding-right: 5px;
+}
+.modal-lg{
+    max-width: 1000px !important;
+}
+.docs-data {
+    margin: 10px;
+}
+.form-group-file {
+    display: flex;
+    flex-direction: column;
+}
+.form-group-file-btn {
+    display: block;
+    text-align: right;
+    z-index: 101;
+    position: absolute;
+    width: 58%;
+    float: right;
+}
+#form-step-1 div input {
+    width: 50%;
+    border-radius: 5px;
+    z-index: 1000;
+}
+#form-step-1 .preview-image {
+    margin-top: 15px;
+    margin-left: 3px;
+}
+#form-step-1 .form-group,
+#form-step-1 .form-parent-group {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+}
+#form-step-1 .form-parent-group .form-group {
+    border: none;
+    border-radius: 0px;
+    padding: 0;
+}
+.column-group {
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.form-group-column {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 5px !important;
+}
+.form-group-file-btn button {
+    width: 100px;
+}
+
+#form-step-1 div .col-md-8 input {
+    width: 75%;
+}
+.mb-15 label {
+    position: relative;
+    top: 3px;
+}
+.mb-15 span {
+    position: relative;
+    left: 5px;
+    font-weight: bold;
+}
+.parent-form-group .control-group {
+    display: flex;
+    margin: 5px 0;
+    flex-wrap: wrap;
+}
+.parent-form-group .control-group .preview-image {
+    flex: 100%;
+    float: left;
+    width: 100%;
+}
