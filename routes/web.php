@@ -939,6 +939,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['rol
 
     Route::get('package-category/{id}/addon', 'PackageController@getAddonList')->name('package.getAddonList');
 
+    Route::resource('settings', 'SettingController');
+    Route::patch('settings/{id}/update-destroy', 'SettingController@updateDestroy')->name('settings.update-destroy');
+    Route::delete('settings/{id}/update-destroy', 'SettingController@updateDestroy')->name('settings.update-destroy');
+
     // orders
     Route::resource('orders', 'OrderController');
     Route::patch('orders/{id}/update-destroy', 'OrderController@updateDestroy')->name('orders.update-destroy');
