@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Events\CreditUtilizationEvent;
+use App\Helpers\SeoHelper;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\PackageCategoryRepository;
 use App\Repositories\PackageRepository;
@@ -172,7 +173,9 @@ class SubscriptionController extends AppBaseController
     }
     public function career_service()
     {
-        return view('subscriptions.career_service');
+        $meta = SeoHelper::getMeta('Career Service');
+
+        return view('subscriptions.career_service')->with('meta',$meta);
     }
 
 

@@ -74,9 +74,9 @@ class SettingDataTable extends BaseDataTable
         }
 
         return [
-            'page'             => ['title' => trans('page')],
-            'meta_title'       => ['title' => trans('meta_title')],
-            'meta_description' => ['title' => trans('meta_description')],
+            'page'             => ['title' => trans('Page')],
+            'meta_title'       => ['title' => trans('Meta Title')],
+            'meta_description' => ['title' => trans('Meta Description')],
         ];
     }
 

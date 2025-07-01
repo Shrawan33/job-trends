@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Helpers\SeoHelper;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\ChangeUserPasswordRequest;
@@ -783,7 +784,9 @@ class FrontUserController extends AppBaseController
     public function events()
     {
         $events = $this->eventRepository->all();
-        return view('design.events', ['events' => $events]);
+        $meta = SeoHelper::getMeta('Events');
+
+        return view('design.events', ['events' => $events])->with('meta',$meta);
     }
 
     public function eventshow(Event $event)

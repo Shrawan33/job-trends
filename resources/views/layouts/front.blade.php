@@ -1,10 +1,24 @@
+@php
+    use App\Helpers\SeoHelper;
+
+    $meta = SeoHelper::getMeta();
+    $analytics = SeoHelper::getGoogleAnalytics();
+@endphp
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }}</title>
+    {{-- <title>{{ config('app.name') }}</title> --}}
+    <title>{{ $meta['meta_title'] ?? 'JobTrends' }}</title>
+    <meta name="description" content="{{ $meta['meta_description'] ?? 'JobTrends' }}">
+    <link rel="canonical" href="{{ url()->current() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content= "{{ $meta['meta_title'] ?? 'JobTrends' }}" />
+    <meta property="og:description" content="{{ $meta['meta_description'] ?? 'JobTrends' }}" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

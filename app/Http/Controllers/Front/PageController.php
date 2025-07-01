@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Classes\NotifyAdminInquiry;
+use App\Helpers\SeoHelper;
 use App\Repositories\BlogRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\CmsRepository;
@@ -39,7 +40,9 @@ class PageController extends AppBaseController
      */
     public function blog()
     {
-        return view('front_pages.blog');
+        $meta = SeoHelper::getMeta('Blog');
+
+        return view('front_pages.blog')->with('meta',$meta);
     }
 
     public function faq()
@@ -49,12 +52,15 @@ class PageController extends AppBaseController
 
     public function contactUs()
     {
-        return view('front_pages.contact');
+        $meta = SeoHelper::getMeta('Contact Us');
+
+        return view('front_pages.contact')->with('meta',$meta);
     }
 
     public function aboutUs()
     {
-        return view('front_pages.about');
+        $meta = SeoHelper::getMeta('About Us');
+        return view('front_pages.about')->with('meta',$meta);
     }
     public function socialPage()
     {
@@ -74,8 +80,9 @@ class PageController extends AppBaseController
         $terms = $this->cmsRepository->all(['page_name' => 'terms-condition']);
         $terms1 = $terms->first();
         $terms1->description  = nl2br($terms1->description);
+        $meta = SeoHelper::getMeta('Terms Condition');
 
-        $view = view('front_pages.terms')->with('terms', $terms1);
+        $view = view('front_pages.terms')->with('terms', $terms1)->with('meta',$meta);
         return $this->renderView($view);
     }
 
