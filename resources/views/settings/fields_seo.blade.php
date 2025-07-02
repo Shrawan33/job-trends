@@ -10,6 +10,7 @@
         'Events' => 'Events',
         'About Us' => 'About Us',
         'Contact Us' => 'Contact Us',
+        'Faq' => 'Faq'
     ], old('page', $setting->page ?? ''), ['class' => 'form-control', 'placeholder' => 'Select Page']) !!}
 </div>
 
