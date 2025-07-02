@@ -1,8 +1,5 @@
 @php
-    use App\Helpers\SeoHelper;
-
-    $meta = SeoHelper::getMeta();
-    $analytics = SeoHelper::getGoogleAnalytics();
+    $analytics = \App\Helpers\SeoHelper::getScript();
 @endphp
 
 <!DOCTYPE html>
@@ -67,9 +64,16 @@
     @stack('page_css')
 
     <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-48W4C2HX3T"> </script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-48W4C2HX3T'); </script>
+
+    <!-- HEAD analytics -->
+    {!! $analytics['google_analytics_head'] ?? '' !!}
+
 </head>
 
 <body class="@if (\Route::current()->getName() == 'socialPage') social_page @endif @if (\Route::current()->getName() == 'front.register' || \Route::current()->getName() == 'login' || \Route::current()->getName() == 'forgot_password') login_pages  @endif @if (\Route::current()->getName() == 'home.verfied')home @endif @if (\Route::current()->getName() == 'about-us' || \Route::current()->getName() == 'contact-us' || \Route::current()->getName() == 'subscription.service' || \Route::current()->getName() == 'employer.landing' || \Route::current()->getName() == 'jobseeker.landing') blue_footer  @endif">
+
+    <!-- BODY analytics -->
+    {!! $analytics['google_analytics_body'] ?? '' !!}
 
     @section('class', 'bg-gray')
     @if (\Route::current()->getName() != 'login' && \Route::current()->getName() != 'front.register'  && \Route::current()->getName() != 'forgot_password')
@@ -98,6 +102,10 @@
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer border-top-0">
+
+                    <!-- FOOTER analytics -->
+                    {!! $analytics['google_analytics_footer'] ?? '' !!}
+
                     <div id="create_another_label" class="d-none flex-content">
                         {!! Form::checkbox('create_another', 1, old('create_another', 0), ['id' => 'create_another', 'label' => trans('label.create_another')]) !!}
                     </div>

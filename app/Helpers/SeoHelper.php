@@ -22,5 +22,19 @@ class SeoHelper
             'meta_description' => '',
         ];
     }
+
+    public static function getScript($page = null)
+    {
+        // If not provided, fallback to current route name
     
+        $setting = Setting::where('key', 'google_analytics')->first();
+
+        return $setting ? json_decode($setting->value, true) : [
+            'google_analytics_head' => '',
+            'google_analytics_body' => '',
+            'google_analytics_footer' => '',
+
+        ];
+    }
+
 }
