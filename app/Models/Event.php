@@ -38,6 +38,8 @@ class Event extends Model
         'event_description',
         'event_date',
         'small_description',
+        'meta_title',
+        'meta_description',
         'is_deleted',
         'created_by',
         'updated_by'
@@ -52,6 +54,8 @@ class Event extends Model
         'id' => 'integer',
         'event_title' => 'string',
         'event_description' => 'string',
+        'meta_title' => 'string',
+        'meta_description' => 'string',   
         // 'event_date' => 'datetime'
         'event_date' => 'datetime:Y-m-d',
     ];

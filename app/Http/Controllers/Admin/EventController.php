@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\EventDataTable;
+use App\Helpers\SeoHelper;
 use App\Http\Requests;
 use App\Http\Requests\CreateEventRequest;
 use App\Http\Requests\UpdateEventRequest;
@@ -37,7 +38,10 @@ class EventController extends AppBaseController
      */
     public function index(EventDataTable $eventDataTable)
     {
-        return $eventDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity]);
+
+        $meta = SeoHelper::getMeta('Events');
+
+        return $eventDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity])->with('meta',$meta);
     }
 
     /**
@@ -72,6 +76,10 @@ class EventController extends AppBaseController
             // Parse event_date
             $eventDate = Carbon::parse($input['event_date']);
             $input['event_date'] = $eventDate;
+
+             // Save meta fields (optional fallback)
+            $input['meta_title'] = $input['meta_title'] ?? $input['event_title'];
+            $input['meta_description'] = $input['meta_description'] ?? str()->limit(strip_tags($input['event_description']), 160);
 
             // Create event using the modified $input array
             $event = $this->repository->create($input);
@@ -163,7 +171,13 @@ class EventController extends AppBaseController
                 return redirect(route($this->entity['url'] . '.index'));
             }
 
-            $event = $this->repository->update($request->all(), $id, true);
+            $input = $request->all();
+
+            // Set default SEO fields if not provided
+            $input['meta_title'] = $input['meta_title'] ?? $input['event_title'];
+            $input['meta_description'] = $input['meta_description'] ?? str()->limit(strip_tags($input['event_description'] ?? ''), 160);
+
+            $event = $this->repository->update($input, $id, true);
 
             // Handle image upload
             $images = $request->get('icon_images', []);

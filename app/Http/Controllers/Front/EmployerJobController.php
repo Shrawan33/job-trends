@@ -78,7 +78,11 @@ class EmployerJobController extends AppBaseController
      */
     public function index(EmployerJobDataTable $employerJobDataTable)
     {
-        return $employerJobDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity]);
+        $meta = [
+            'meta_title' => @$event->meta_title ?? 'JobTrends' ?? config('app.name'),
+            'meta_description' => @$event->meta_description ?? str()->limit(strip_tags('JobTrends'), 160),
+        ];
+        return $employerJobDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity])->with('meta',$meta);
     }
 
     /**

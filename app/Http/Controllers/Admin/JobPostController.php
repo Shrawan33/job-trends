@@ -97,6 +97,10 @@ class JobPostController extends AppBaseController
         try {
             $input = $request->all();
 
+            // Set default meta values if not provided
+            $input['meta_title'] = $input['meta_title'] ?? $input['title'];
+            $input['meta_description'] = $input['meta_description'] ?? \Str::limit(strip_tags($input['description'] ?? ''), 160);
+
             $job = $request->except('skill_id', 'certification_id', 'qualification_id');
             $job['is_featured'] = $request->get('is_featured', null) != null ? 1 : 0;
             $employerJob = $this->repository->create($job);
@@ -207,6 +211,10 @@ class JobPostController extends AppBaseController
             }
 
             $input = $request->all();
+
+            // Set default meta values if not provided
+            $input['meta_title'] = $input['meta_title'] ?? $input['title'];
+            $input['meta_description'] = $input['meta_description'] ?? \Str::limit(strip_tags($input['description'] ?? ''), 160);
 
 
 

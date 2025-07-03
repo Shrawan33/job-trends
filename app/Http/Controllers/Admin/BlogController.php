@@ -65,7 +65,11 @@ class BlogController extends AppBaseController
         try {
             $input = $request->all();
 
-            $blog = $this->repository->create($input);
+            // Set default meta fields if not provided
+             $input['meta_title'] = $input['meta_title'] ?? $input['title'] ?? '';
+             $input['meta_description'] = $input['meta_description'] ?? str()->limit(strip_tags($input['small_description'] ?? ''), 160);
+
+             $blog = $this->repository->create($input);
 
             // images
             $images = $request->get('blog_images', []);
@@ -150,7 +154,13 @@ class BlogController extends AppBaseController
                 return redirect(route($this->entity['url'] . '.index'));
             }
 
-            $blog = $this->repository->update($request->all(), $id, true);
+            $input = $request->all();
+
+            // Set default meta fields if not provided
+            $input['meta_title'] = $input['meta_title'] ?? $input['title'] ?? '';
+            $input['meta_description'] = $input['meta_description'] ?? str()->limit(strip_tags($input['small_description'] ?? ''), 160);
+
+            $blog = $this->repository->update($input, $id, true);
 
             // images
             $images = $request->get('blog_images', []);
