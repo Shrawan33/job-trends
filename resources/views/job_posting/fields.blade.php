@@ -209,3 +209,16 @@
 @if (isset($employerJob->expiration_date))
     @include('vendor.moment.datetimepicker', ['dateFields' => ['expiration_date' => $employerJob->expiration_date]])
 @endif
+
+
+<div class="form-group col-sm-12">
+</div>
+<div class="form-group col-sm-12">
+    {!! Form::label('meta_title', 'Meta Title') !!}
+    {!! Form::text('meta_title', null, ['class' => 'form-control', 'maxlength' => 255]) !!}
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('meta_description', 'Meta Description') !!}
+    {!! Form::textarea('meta_description', null, ['class' => 'form-control', 'rows' => 3]) !!}
+</div>

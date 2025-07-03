@@ -143,13 +143,18 @@ class PageController extends AppBaseController
         try {
             $blog = $this->blogRepository->find($id, ['*']);
 
+            $meta = [
+                'meta_title' => $blog->meta_title ?? 'JobTrends' ?? config('app.name'),
+                'meta_description' => $blog->meta_description ?? '',
+            ];
+
             if (empty($blog)) {
                 Flash::error('Record not found');
 
                 return redirect()->back();
             }
 
-            return view('front_pages.blog_detail', ['blog' => $blog]);
+            return view('front_pages.blog_detail', ['blog' => $blog ,'meta'  => $meta,]);
         } catch (Throwable $e) {
             Flash::error($e->getMessage());
             return redirect()->back();

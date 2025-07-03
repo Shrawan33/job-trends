@@ -1,4 +1,7 @@
 <footer class="footer_wraper position-relative py-30 border-top">
+      <!-- FOOTER analytics -->
+      {!! $analytics['google_analytics_footer'] ?? '' !!}
+      
     {{-- <img src="{{ asset('images/footer_bg.png') }}" alt="fea_img" width="100%" class="footer_bg_img"> --}}
     <div class="container">
         <div class="row align-items-center">

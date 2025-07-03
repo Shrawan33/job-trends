@@ -102,10 +102,6 @@
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer border-top-0">
-
-                    <!-- FOOTER analytics -->
-                    {!! $analytics['google_analytics_footer'] ?? '' !!}
-
                     <div id="create_another_label" class="d-none flex-content">
                         {!! Form::checkbox('create_another', 1, old('create_another', 0), ['id' => 'create_another', 'label' => trans('label.create_another')]) !!}
                     </div>

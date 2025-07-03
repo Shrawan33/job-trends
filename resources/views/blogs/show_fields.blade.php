@@ -23,3 +23,15 @@
     <p>{{ FunctionHelper::fromSqlDateTime($blog->createdDate->toDateTimeString(), true, 'd-m-Y')??''}}</p>
 </div>
 
+<!-- Meta Title Field -->
+<div class="col-sm-12">
+    {!! Form::label('meta_title', 'Meta Title') !!}
+    <p>{!! $event->meta_title !!}</p>
+</div>
+
+<!-- Meta Description Field -->
+<div class="col-sm-12">
+    {!! Form::label('meta_description', 'Meta Description') !!}
+    <p>{!! $event->meta_description !!}</p>
+</div>
+
