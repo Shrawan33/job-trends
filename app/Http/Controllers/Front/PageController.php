@@ -145,7 +145,7 @@ class PageController extends AppBaseController
 
             $meta = [
                 'meta_title' => $blog->meta_title ?? 'JobTrends' ?? config('app.name'),
-                'meta_description' => $blog->meta_description ?? str()->limit(strip_tags('JobTrends'), 160),
+                'meta_description' => $blog->meta_description ?? '',
             ];
 
             if (empty($blog)) {

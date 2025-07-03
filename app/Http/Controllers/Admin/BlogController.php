@@ -66,7 +66,7 @@ class BlogController extends AppBaseController
             $input = $request->all();
 
             // Set default meta fields if not provided
-             $input['meta_title'] = $input['meta_title'] ?? $input['title'] ?? '';
+             $input['meta_title'] = $input['meta_title'] ??  '';
              $input['meta_description'] = $input['meta_description'] ?? '';
 
              $blog = $this->repository->create($input);
