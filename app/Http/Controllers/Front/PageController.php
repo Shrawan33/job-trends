@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Classes\NotifyAdminInquiry;
+use App\Helpers\SeoHelper;
 use App\Repositories\BlogRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\CmsRepository;
@@ -39,22 +40,29 @@ class PageController extends AppBaseController
      */
     public function blog()
     {
-        return view('front_pages.blog');
+        $meta = SeoHelper::getMeta('Blog');
+
+        return view('front_pages.blog')->with('meta',$meta);
     }
 
     public function faq()
     {
-        return view('front_pages.faq');
+        $meta = SeoHelper::getMeta('Faq');
+
+        return view('front_pages.faq')->with('meta',$meta);
     }
 
     public function contactUs()
     {
-        return view('front_pages.contact');
+        $meta = SeoHelper::getMeta('Contact Us');
+
+        return view('front_pages.contact')->with('meta',$meta);
     }
 
     public function aboutUs()
     {
-        return view('front_pages.about');
+        $meta = SeoHelper::getMeta('About Us');
+        return view('front_pages.about')->with('meta',$meta);
     }
     public function socialPage()
     {
@@ -74,8 +82,9 @@ class PageController extends AppBaseController
         $terms = $this->cmsRepository->all(['page_name' => 'terms-condition']);
         $terms1 = $terms->first();
         $terms1->description  = nl2br($terms1->description);
+        $meta = SeoHelper::getMeta('Terms Condition');
 
-        $view = view('front_pages.terms')->with('terms', $terms1);
+        $view = view('front_pages.terms')->with('terms', $terms1)->with('meta',$meta);
         return $this->renderView($view);
     }
 
@@ -134,13 +143,18 @@ class PageController extends AppBaseController
         try {
             $blog = $this->blogRepository->find($id, ['*']);
 
+            $meta = [
+                'meta_title' => $blog->meta_title ?? 'JobTrends' ?? config('app.name'),
+                'meta_description' => $blog->meta_description ?? '',
+            ];
+
             if (empty($blog)) {
                 Flash::error('Record not found');
 
                 return redirect()->back();
             }
 
-            return view('front_pages.blog_detail', ['blog' => $blog]);
+            return view('front_pages.blog_detail', ['blog' => $blog ,'meta'  => $meta,]);
         } catch (Throwable $e) {
             Flash::error($e->getMessage());
             return redirect()->back();

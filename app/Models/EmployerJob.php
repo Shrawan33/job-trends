@@ -98,6 +98,8 @@ class EmployerJob extends Model
         'approval_status_reason',
         'job_type_id',
         'specialization_id',
+        'meta_title',
+        'meta_description',
 
     ];
 
@@ -129,7 +131,9 @@ class EmployerJob extends Model
         'salary_type_id' => 'integer',
         'status' => 'integer',
         'slug' => 'string',
-        'expiration_date' => 'date'
+        'expiration_date' => 'date',
+        'meta_title' => 'string',
+        'meta_description' => 'string',
     ];
 
     /**

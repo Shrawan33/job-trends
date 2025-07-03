@@ -31,6 +31,9 @@
         <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('js/setting-modal.js') }}"></script>
+
         @yield('third_party_stylesheets')
 
         @stack('page_css')
@@ -283,5 +286,42 @@
             })
         </script>
         @endif
+
+        <script>
+            $(document).on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            let $form = $(this);
+            let url = $form.attr('action');
+            let method = $form.attr('method');
+            let formData = new FormData(this);
+            let form_key = $form.find('input[name="key"]').val(); // <-- ✅ this line is important
+
+            $.ajax({
+                url: url,
+                type: method,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // ✅ Add this:
+                    if (form_key === 'google_analytics') {
+                        window.location.reload();
+                        return;
+                    }
+
+                    // Default behavior
+                    $('#mainModal').modal('hide');
+                    if (window.LaravelDataTables && window.LaravelDataTables["dataTableBuilder"]) {
+                        window.LaravelDataTables["dataTableBuilder"].ajax.reload();
+                    }
+                },
+                error: function (err) {
+                    // show error
+                }
+            });
+        });
+
+        </script>
     </body>
 </html>

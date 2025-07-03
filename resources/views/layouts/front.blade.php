@@ -1,10 +1,21 @@
+@php
+    $analytics = \App\Helpers\SeoHelper::getScript();
+@endphp
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }}</title>
+    {{-- <title>{{ config('app.name') }}</title> --}}
+    <title>{{ $meta['meta_title'] ?? 'JobTrends' }}</title>
+    <meta name="description" content="{{ $meta['meta_description'] ?? 'JobTrends' }}">
+    <link rel="canonical" href="{{ url()->current() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content= "{{ $meta['meta_title'] ?? 'JobTrends' }}" />
+    <meta property="og:description" content="{{ $meta['meta_description'] ?? 'JobTrends' }}" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -53,9 +64,16 @@
     @stack('page_css')
 
     <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-48W4C2HX3T"> </script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-48W4C2HX3T'); </script>
+
+    <!-- HEAD analytics -->
+    {!! $analytics['google_analytics_head'] ?? '' !!}
+
 </head>
 
 <body class="@if (\Route::current()->getName() == 'socialPage') social_page @endif @if (\Route::current()->getName() == 'front.register' || \Route::current()->getName() == 'login' || \Route::current()->getName() == 'forgot_password') login_pages  @endif @if (\Route::current()->getName() == 'home.verfied')home @endif @if (\Route::current()->getName() == 'about-us' || \Route::current()->getName() == 'contact-us' || \Route::current()->getName() == 'subscription.service' || \Route::current()->getName() == 'employer.landing' || \Route::current()->getName() == 'jobseeker.landing') blue_footer  @endif">
+
+    <!-- BODY analytics -->
+    {!! $analytics['google_analytics_body'] ?? '' !!}
 
     @section('class', 'bg-gray')
     @if (\Route::current()->getName() != 'login' && \Route::current()->getName() != 'front.register'  && \Route::current()->getName() != 'forgot_password')

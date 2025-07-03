@@ -1,4 +1,7 @@
 <footer class="footer_wraper position-relative py-30 border-top">
+      <!-- FOOTER analytics -->
+      {!! $analytics['google_analytics_footer'] ?? '' !!}
+      
     {{-- <img src="{{ asset('images/footer_bg.png') }}" alt="fea_img" width="100%" class="footer_bg_img"> --}}
     <div class="container">
         <div class="row align-items-center">
@@ -20,7 +23,9 @@
                     <li ><a class="" href="{{ route('search-jobs.index') }}">{{__('label.salaries')}}</a></li>
                     <li ><a class="" href="{{ route('events') }}">{{__('label.events')}}</a></li>
                     {{-- <li ><a class="" href="{{route('work-with-us')}}">{{__('label.work_with_us')}}</a></li> --}}
-                    <li ><a class="test-deployment" href="{{route('about-us')}}">{{__('label.about')}}</a></li>
+                    <li ><a class="" href="{{route('about-us')}}">{{__('label.about')}}</a></li>
+                    <li ><a class="" href="{{route('faq')}}">{{__('Faq')}}</a></li>
+
                 </ul>
                 <ul class="p-0 mb-0 bottom_menu_wraper">
                     <li><a class="" href="{{route('privacy-policy')}}">{{__('label.privacy-policy')}}</a></li>

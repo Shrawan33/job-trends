@@ -43,6 +43,20 @@
             'multiple' => true, 'limit' => 1, 'bgcolor' => '', 'remove_button_icon' => 'fa fa-times-circle'])
     </div>
 
+    <div class="form-group col-sm-12">
+    </div>
+
+    <div class="form-group col-sm-12">
+        {!! Form::label('meta_title', 'Meta Title') !!}
+        {!! Form::text('meta_title', old('meta_title', $blog->meta_title ?? ''), ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group col-sm-12">
+        {!! Form::label('meta_description', 'Meta Description') !!}
+        {!! Form::textarea('meta_description', old('meta_description', $blog->meta_description ?? ''), ['class' => 'form-control', 'rows' => 3]) !!}
+    </div>
+
+
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -36,7 +36,9 @@ class Blog extends Model
         'createdBy',
         'createdDate',
         'updated_by',
-        'small_description'
+        'small_description',
+        'meta_title',
+        'meta_description',
     ];
 
     /**
@@ -50,7 +52,9 @@ class Blog extends Model
         'description' => 'string',
         'createdBy' => 'string',
         'createdDate' => 'date',
-        'createdBy' => 'string'
+        'createdBy' => 'string',
+        'meta_title' => 'string',
+        'meta_description' => 'string',
     ];
 
     /**
