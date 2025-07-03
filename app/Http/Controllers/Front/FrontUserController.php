@@ -791,6 +791,15 @@ class FrontUserController extends AppBaseController
 
     public function eventshow(Event $event)
     {
-        return view('design.eventshow', ['event' => $event]);
+
+        $meta = [
+            'meta_title' => @$event->meta_title ?? config('app.name'),
+            'meta_description' => @$event->meta_description,
+        ];
+
+        return view('design.eventshow', [
+            'event' => $event,
+            'meta'  => $meta,
+        ]);
     }
 }
