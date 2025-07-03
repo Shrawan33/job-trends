@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\SeoHelper;
 use App\Repositories\UserPackageRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\UserReviewRepository;
@@ -37,7 +38,7 @@ class HomeController extends Controller
         $reviewed_users = $this->userRepository->basicReviews();
         // dd($reviewed_users);
         //dd($feeds);
-
-        return view('welcome')->with('locations', [])->with('states', [])->with('featured_jobseekers', $featured_jobseekers)->with('featured_employers', $featured_employers)->with('reviewed_users', $reviewed_users);
+        $meta = SeoHelper::getMeta('home');
+        return view('welcome')->with('locations', [])->with('states', [])->with('featured_jobseekers', $featured_jobseekers)->with('featured_employers', $featured_employers)->with('reviewed_users', $reviewed_users)->with('meta',$meta);
     }
 }

@@ -31,6 +31,9 @@
         <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('js/setting-modal.js') }}"></script>
+
         @yield('third_party_stylesheets')
 
         @stack('page_css')

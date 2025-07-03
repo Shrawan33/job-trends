@@ -20,9 +20,8 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use App\Http\View\Composers\FrontHomeComposer;
 use App\Http\Controllers\CandidateController;
-
-
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 Route::impersonate();
 
 /*
@@ -196,6 +195,14 @@ Route::get('school', function () {
 
 // Start: website routes
 Route::get('/', 'HomeController@index')->name('home.verfied');
+
+// sitemap route
+Route::get('/sitemap.xml', function () {
+    $path = public_path('sitemap.xml');
+    abort_unless(File::exists($path), 404);
+
+    return Response::file($path, ['Content-Type' => 'application/xml']);
+});
 
 // Route::post('/langauge/{code}', 'HomeController@language')->name('home.language');
 
@@ -938,6 +945,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['rol
     Route::delete('packageCategories/{id}/update-destroy', 'PackageCategoryController@updateDestroy')->name('packageCategories.update-destroy');
 
     Route::get('package-category/{id}/addon', 'PackageController@getAddonList')->name('package.getAddonList');
+
+    Route::resource('settings', 'SettingController');
+    Route::patch('settings/{id}/update-destroy', 'SettingController@updateDestroy')->name('settings.update-destroy');
+    Route::delete('settings/{id}/update-destroy', 'SettingController@updateDestroy')->name('settings.update-destroy');
 
     // orders
     Route::resource('orders', 'OrderController');

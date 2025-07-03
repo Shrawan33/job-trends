@@ -261,7 +261,13 @@
                 <p>{{ trans('label.level') }}</p>
             </a>
         </li>
-
+        <li class="nav-item">
+            <a href="{{ route('settings.index') }}" class="nav-link {{ Request::is('levels*') ? 'active' : '' }}">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <p>{{ trans('SEO') }}</p>
+            </a>
+        </li>
+        
     </ul>
 </li>
 <li class="nav-item {{ isset($activeReportMenu) && $activeReportMenu ? 'menu-is-opening menu-open' : '' }}">
