@@ -21,6 +21,8 @@
                     <li ><a class="" href="{{ route('events') }}">{{__('label.events')}}</a></li>
                     {{-- <li ><a class="" href="{{route('work-with-us')}}">{{__('label.work_with_us')}}</a></li> --}}
                     <li ><a class="" href="{{route('about-us')}}">{{__('label.about')}}</a></li>
+                    <li ><a class="" href="{{route('faq')}}">{{__('Faq')}}</a></li>
+
                 </ul>
                 <ul class="p-0 mb-0 bottom_menu_wraper">
                     <li><a class="" href="{{route('privacy-policy')}}">{{__('label.privacy-policy')}}</a></li>

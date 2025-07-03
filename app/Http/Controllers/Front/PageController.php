@@ -47,7 +47,9 @@ class PageController extends AppBaseController
 
     public function faq()
     {
-        return view('front_pages.faq');
+        $meta = SeoHelper::getMeta('Faq');
+
+        return view('front_pages.faq')->with('meta',$meta);
     }
 
     public function contactUs()
