@@ -41,7 +41,7 @@ class EventController extends AppBaseController
 
         $meta = SeoHelper::getMeta('Events');
 
-        return $eventDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity])->with('meta',$meta);
+        return $eventDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity]);
     }
 
     /**
