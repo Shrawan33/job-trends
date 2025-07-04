@@ -244,7 +244,7 @@ class JobPostController extends AppBaseController
             $questionnaire = isset($input['questionnaire']) ? $input['questionnaire'] : [];
             $this->questionnaireRepository->sync($questionnaire, $employerJob->id);
 
-            if ($input['approve_job']) {
+            if (@$input['approve_job']) {
                 $input['status'] = 1;
                 $input['apporval_reason'] = '';
                 $status = config("constants.approval_status.data.{$input['status']}", null);

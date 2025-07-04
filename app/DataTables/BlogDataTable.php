@@ -65,6 +65,7 @@ class BlogDataTable extends BaseDataTable
             'title' => ['title' => trans('label.title')],
             'createdBy' => ['title' => trans('label.created_by')],
             'createdDate' => ['title' => trans('label.created'), 'searchable' => false],
+            'meta_title' => ['meta_title' => 'Meta Title']
             // 'created_at' => ['title' => 'Created', 'searchable' => false]
         ];
     }

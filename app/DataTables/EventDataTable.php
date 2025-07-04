@@ -67,6 +67,7 @@ class EventDataTable extends BaseDataTable
         return [
             'event_title' => ['event_title' => trans('label.title')],
             'event_date' => ['event_date' => trans(('label.event_date'))],
+            'meta_title' => ['meta_title' => 'Meta Title']
             // 'event_description' => ['event_description' => trans('label.description')],
             // 'createdDate' => ['title' => trans('label.created'), 'searchable' => false],
             // 'created_at' => ['title' => 'Created', 'searchable' => false]
