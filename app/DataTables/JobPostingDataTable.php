@@ -113,6 +113,8 @@ class JobPostingDataTable extends BaseDataTable
                 'approval_status' => ['title' => trans('label.approveStatus')],
 
                 'category_id' => ['title' => trans('label.category'), 'name' => 'categories.title'],
+                'meta_title' => ['meta_title' => 'Meta Title']
+
             ];
         } else {
             return [
@@ -124,6 +126,8 @@ class JobPostingDataTable extends BaseDataTable
                 'deleted_at' => ['title' => trans('label.statusSelect')],
                 'is_featured' => ['title' => trans('label.is_featured')],
                 'category_id' => ['title' => trans('label.category'), 'name' => 'categories.title'],
+                'meta_title' => ['meta_title' => 'Meta Title']
+
             ];
         }
 

@@ -43,7 +43,7 @@
     </div>
     <div class="form-group col-sm-12">
         {!! Form::label('meta_title', 'Meta Title') !!}
-        {!! Form::text('meta_title', null, ['class' => 'form-control', 'maxlength' => 255]) !!}
+        {!! Form::text('meta_title', null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group col-sm-12">
