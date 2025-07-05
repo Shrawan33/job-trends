@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use App\Http\View\Composers\FrontHomeComposer;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 Route::impersonate();
@@ -197,12 +198,9 @@ Route::get('school', function () {
 Route::get('/', 'HomeController@index')->name('home.verfied');
 
 // sitemap route
-Route::get('/sitemap.xml', function () {
-    $path = public_path('sitemap.xml');
-    abort_unless(File::exists($path), 404);
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+Route::get('/generate-sitemap', [SitemapController::class, 'generateAndSave']);
 
-    return Response::file($path, ['Content-Type' => 'application/xml']);
-});
 
 // Route::post('/langauge/{code}', 'HomeController@language')->name('home.language');
 

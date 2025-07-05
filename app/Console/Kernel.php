@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\SendPackageReminder;
 use App\Console\Commands\SendExpirationDate;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -37,6 +38,10 @@ class Kernel extends ConsoleKernel
         $schedule->command(SendExpirationDate::class)->dailyAt('22:00');
         // to remove telescope logs older than 72 hours
         $schedule->command('telescope:prune --hours=72')->daily();
+        // Generate sitemap
+        $schedule->call(function () {
+        SitemapController::generateSitemapStatic();
+        })->daily();
     }
 
     /**
