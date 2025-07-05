@@ -73,16 +73,14 @@ class Event extends Model
     protected static function booted()
     {
         static::created(function () {
-            SitemapController::generateSitemapStatic();
-        });
-
-        static::updated(function () {
-            SitemapController::generateSitemapStatic();
+            \App\Http\Controllers\SitemapController::generateSitemapStatic();
         });
 
         static::deleted(function () {
-            SitemapController::generateSitemapStatic();
+            \App\Http\Controllers\SitemapController::generateSitemapStatic();
         });
     }
+
+
 
 }
