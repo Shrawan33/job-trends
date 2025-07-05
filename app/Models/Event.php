@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\SitemapController;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedByUpdatedBy;
 use App\Traits\DocumentRelationship;
@@ -55,7 +56,7 @@ class Event extends Model
         'event_title' => 'string',
         'event_description' => 'string',
         'meta_title' => 'string',
-        'meta_description' => 'string',   
+        'meta_description' => 'string',
         // 'event_date' => 'datetime'
         'event_date' => 'datetime:Y-m-d',
     ];
@@ -69,5 +70,19 @@ class Event extends Model
         'event_title' => 'required'
     ];
 
+    protected static function booted()
+    {
+        static::created(function () {
+            SitemapController::generateSitemapStatic();
+        });
+
+        static::updated(function () {
+            SitemapController::generateSitemapStatic();
+        });
+
+        static::deleted(function () {
+            SitemapController::generateSitemapStatic();
+        });
+    }
 
 }
