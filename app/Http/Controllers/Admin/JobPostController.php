@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Classes\NotifyCandidate;
 use App\DataTables\JobPostingDataTable;
+use App\Helpers\SitemapHelper;
 use App\Http\Requests\UpdatePackageRequest;
 use Laracasts\Flash\Flash;
 use App\Http\Controllers\AppBaseController;
@@ -130,6 +131,12 @@ class JobPostController extends AppBaseController
             $jobseekerIds = $this->jobSeekerDetailRepository->getJobseekerIds($employerJob);
 
             (new NotifyCandidate($jobseekerIds, $employerJob, 'JobAlertNotification'))->notify();
+
+            $jobRoute = [
+                ["events/{$employerJob->id}", '0.64'],
+            ];
+
+            SitemapHelper::addNewRoute($jobRoute);
 
             return redirect(route($this->entity['url'] . '.index'))->withInput(['toast_success' => $this->entity['singular'] . ' saved successfully.']);
         } catch (Throwable $e) {

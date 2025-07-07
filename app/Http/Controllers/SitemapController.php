@@ -2,60 +2,102 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
+use App\Models\Blog;
+use App\Models\Event;
+use App\Models\EmployerJob;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\URL as LaravelURL;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 class SitemapController extends Controller
 {
-    public function index()
-    {
-        // Static URLs
-        $staticUrls = [
-            '/',
-            '/career-service',
-            '/blog',
-            '/feeds',
-            '/search-jobs',
-            '/terms-condition',
-            '/events',
-            '/about-us',
-            '/contact-us'
+    // public function generateAndSave()
+    // {
+    //     self::generateSitemapStatic();
+    //     return response()->json(['message' => 'Sitemap updated successfully']);
+    // }
 
+    // public static function generateSitemapStatic()
+    // {
+    //     $sitemapPath = public_path('sitemap.xml');
+    //     $existingContent = File::exists($sitemapPath) ? File::get($sitemapPath) : '';
 
-        ];
+    //     $sitemap = Sitemap::create();
+    //     $now = Carbon::now();
 
-        // Dynamic URLs from database (example)
-        $dynamicUrls = [];
+    //     // Add static pages
+    //     $staticPages = [
+    //         ['/', '1.0'],
+    //         ['/login', '0.8'],
+    //         ['/registration/jobseeker', '0.8'],
+    //         ['/search-jobs', '0.8'],
+    //         ['/career-service', '0.8'],
+    //         ['/feeds', '0.8'],
+    //         ['/interview-plans', '0.8'],
+    //         ['/offer-register', '0.8'],
+    //         ['/about-us', '0.8'],
+    //         ['/privacy-policy', '0.8'],
+    //         ['/terms-condition', '0.8'],
+    //         ['/contact-us', '0.8'],
+    //         ['/forgot-password', '0.64'],
+    //     ];
 
-        // Example: products
-        // if (class_exists(Product::class)) {
-        //     $products = Product::all();
-        //     foreach ($products as $product) {
-        //         $dynamicUrls[] = '/products/' . $product->slug;
-        //     }
-        // }
+    //     foreach ($staticPages as [$path, $priority]) {
+    //         $url = LaravelURL::to($path);
+    //         if (!str_contains($existingContent, $url)) {
+    //             $sitemap->add(
+    //                 Url::create($url)
+    //                     ->setLastModificationDate($now)
+    //                     ->setPriority($priority)
+    //             );
+    //         }
+    //     }
 
-        // Merge all URLs
-        $urls = array_merge($staticUrls, $dynamicUrls);
+    //     // Add Blogs
+    //     foreach (Blog::latest()->get() as $blog) {
+    //         $url = LaravelURL::to('/blog/' . $blog->id);
+    //         if (!str_contains($existingContent, $url)) {
+    //             $sitemap->add(
+    //                 Url::create($url)
+    //                     ->setLastModificationDate($blog->updated_at ?? $blog->created_at)
+    //                     ->setPriority(0.7)
+    //             );
+    //         }
+    //     }
 
-        // Build XML
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+    //     // Add Events
+    //     foreach (Event::latest()->get() as $event) {
+    //         $url = LaravelURL::to('/events/' . $event->id);
+    //         if (!str_contains($existingContent, $url)) {
+    //             $sitemap->add(
+    //                 Url::create($url)
+    //                     ->setLastModificationDate($event->updated_at ?? $event->created_at)
+    //                     ->setPriority(0.7)
+    //             );
+    //         }
+    //     }
 
-        foreach ($urls as $url) {
-            $xml .= '  <url>' . PHP_EOL;
-            $xml .= '    <loc>' . htmlspecialchars(URL::to($url)) . '</loc>' . PHP_EOL;
-            $xml .= '    <lastmod>' . Carbon::now()->toDateString() . '</lastmod>' . PHP_EOL;
-            $xml .= '    <changefreq>weekly</changefreq>' . PHP_EOL;
-            $xml .= '    <priority>0.8</priority>' . PHP_EOL;
-            $xml .= '  </url>' . PHP_EOL;
-        }
+    //     // Add Jobs
+    //     foreach (EmployerJob::latest()->get() as $job) {
+    //         $url = LaravelURL::to('/job-detail/' . $job->slug);
+    //         if (!str_contains($existingContent, $url)) {
+    //             $sitemap->add(
+    //                 Url::create($url)
+    //                     ->setLastModificationDate($job->updated_at ?? $job->created_at)
+    //                     ->setPriority(0.7)
+    //             );
+    //         }
+    //     }
 
-        $xml .= '</urlset>';
-
-        return Response::make($xml, 200)->header('Content-Type', 'application/xml');
-    }
-
+    //     if ($existingContent) {
+    //         $existingContent = str_replace('</urlset>', '', $existingContent);
+    //         File::put($sitemapPath, $existingContent);
+    //         File::append($sitemapPath, $sitemap->render()->renderBody());
+    //         File::append($sitemapPath, '</urlset>');
+    //     } else {
+    //         $sitemap->writeToFile($sitemapPath);
+    //     }
+    // }
 }

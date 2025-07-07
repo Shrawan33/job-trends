@@ -68,4 +68,5 @@ class Blog extends Model
         'createdBy' => 'required',
         'createdDate' => 'required',
     ];
+
 }
