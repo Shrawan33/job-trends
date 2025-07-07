@@ -69,15 +69,4 @@ class Blog extends Model
         'createdDate' => 'required',
     ];
 
-    protected static function booted()
-    {
-        static::created(function () {
-            \App\Http\Controllers\SitemapController::generateSitemapStatic();
-        });
-
-        static::deleted(function () {
-            \App\Http\Controllers\SitemapController::generateSitemapStatic();
-        });
-    }
-
 }

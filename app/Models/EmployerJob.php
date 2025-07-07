@@ -422,16 +422,4 @@ class EmployerJob extends Model
     {
         return $this->hasMany(InterviewSchedule::class, 'employer_job_id', 'id')->where('user_id', '!=', null);
     }
-
-    protected static function booted()
-    {
-        static::created(function () {
-            \App\Http\Controllers\SitemapController::generateSitemapStatic();
-        });
-
-        static::deleted(function () {
-            \App\Http\Controllers\SitemapController::generateSitemapStatic();
-        });
-    }
-
 }

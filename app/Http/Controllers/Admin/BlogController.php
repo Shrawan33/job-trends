@@ -77,13 +77,13 @@ class BlogController extends AppBaseController
             $doc_type = config('constants.document_type.cropped_images', 2);
             $this->documentRepository->savePermanent($images, $doc_type, $blog);
 
-            Flash::success($this->entity['singular'] . ' Saved Successfully');
-
             $blogRoute = [
                 ["blog/{$blog->id}", '0.64'],
             ];
 
             SitemapHelper::addNewRoute($blogRoute);
+
+            Flash::success($this->entity['singular'] . ' Saved Successfully');
 
             return redirect(route($this->entity['url'] . '.index'));
         } catch (Throwable $e) {
