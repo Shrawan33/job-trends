@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\EventDataTable;
 use App\Helpers\SeoHelper;
+use App\Helpers\SitemapHelper;
 use App\Http\Requests;
 use App\Http\Requests\CreateEventRequest;
 use App\Http\Requests\UpdateEventRequest;
@@ -91,6 +92,13 @@ class EventController extends AppBaseController
 
             // Flash message on successful creation
             Flash::success($this->entity['singular'] . ' saved successfully.');
+
+
+            $eventRoute = [
+                ["events/{$event->id}", '0.64'],
+            ];
+
+            SitemapHelper::addNewRoute($eventRoute);
 
             // Redirect to the index page for events
             return redirect(route($this->entity['url'] . '.index'));

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\BlogDataTable;
+use App\Helpers\SitemapHelper;
 use App\Http\Requests\CreateBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Repositories\BlogRepository;
@@ -77,6 +78,12 @@ class BlogController extends AppBaseController
             $this->documentRepository->savePermanent($images, $doc_type, $blog);
 
             Flash::success($this->entity['singular'] . ' Saved Successfully');
+
+            $blogRoute = [
+                ["blog/{$blog->id}", '0.64'],
+            ];
+
+            SitemapHelper::addNewRoute($blogRoute);
 
             return redirect(route($this->entity['url'] . '.index'));
         } catch (Throwable $e) {
