@@ -77,8 +77,7 @@ class EmployerJobController extends AppBaseController
      * @return Response
      */
     public function index(EmployerJobDataTable $employerJobDataTable)
-    {
-        
+    {        
         return $employerJobDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity]);
     }
 
@@ -126,8 +125,7 @@ class EmployerJobController extends AppBaseController
             $job['is_urgent'] = $request->get('is_urgent', null) != null ? 1 : 0;
 
             $job['category_id'] = $request->input('category_id');
-            if (is_numeric($input['category_id']) === false && $input['category_id'] != '')
-            {
+            if (is_numeric($input['category_id']) === false && $input['category_id'] != '') {
                 $job['category_id'] = Category::firstOrCreate(['title' => $input['category_id']])->id;
             }
 
@@ -277,8 +275,7 @@ class EmployerJobController extends AppBaseController
             $job['is_urgent'] = $request->get('is_urgent', null) != null ? 1 : 0;
 
             $job['category_id'] = $request->input('category_id');
-            if (is_numeric($input['category_id']) === false && $input['category_id'] != '')
-            {
+            if (is_numeric($input['category_id']) === false && $input['category_id'] != '') {
                 $job['category_id'] = Category::firstOrCreate(['title' => $input['category_id']])->id;
             }
 
@@ -334,13 +331,12 @@ class EmployerJobController extends AppBaseController
             $jobApplicants = $employerJob->applyJob()
                 ->with('userWithoutHiddenProfile') // Assuming this filters users properly
                 ->get();
-                // Send email notifications to each applicant
-                foreach ($jobApplicants as $applyJob) {
+            // Send email notifications to each applicant
+            foreach ($jobApplicants as $applyJob) {
                 // dd($applyJob->status);
                 $applicant = $applyJob->userWithoutHiddenProfile; // Assuming 'userWithoutHiddenProfile' is the relationship to the User model
-                if($applyJob->status == 'Awaiting Review')
-                {
-                $applicant->notify(new JobEdit($employerJob));
+                if ($applyJob->status == 'Awaiting Review') {
+                    $applicant->notify(new JobEdit($employerJob));
                 }
             }
             // Flash::success($this->entity['singular'] . ' updated successfully.');
