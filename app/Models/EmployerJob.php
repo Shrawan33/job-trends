@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\SitemapHelper;
 use App\Scopes\ActiveEmployerScope;
 use App\Traits\ApprovalStatus;
 use Illuminate\Database\Eloquent\Model;
@@ -421,5 +422,17 @@ class EmployerJob extends Model
     public function interviewSchedule()
     {
         return $this->hasMany(InterviewSchedule::class, 'employer_job_id', 'id')->where('user_id', '!=', null);
+    }
+
+
+    protected static function booted()
+    {
+        static::deleted(function ($job) {
+            // Remove sitemap URL when job-detail is deleted
+
+            SitemapHelper::removeRoute([
+                ["job-detail/{$job->id}"]
+            ]);
+        });
     }
 }

@@ -40,8 +40,6 @@ class EventController extends AppBaseController
     public function index(EventDataTable $eventDataTable)
     {
 
-        $meta = SeoHelper::getMeta('Events');
-
         return $eventDataTable->render($this->entity['view'] . '.index', ['entity' => $this->entity]);
     }
 

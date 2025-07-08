@@ -294,7 +294,9 @@ class CartController extends AppBaseController
 
             return redirect()->to($rData->data->instrumentResponse->redirectInfo->url);
         } else {
-            return redirect()->route('error');
+
+            Flash::error('Something went wrong while processing the payment. Please try again.');
+            return redirect()->back()->with('error', 'Something went wrong while processing the payment. Please try again.');
         }
     }
 
