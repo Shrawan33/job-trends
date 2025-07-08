@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\SitemapHelper;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedByUpdatedBy;
@@ -69,5 +70,17 @@ class Event extends Model
     public static $rules = [
         'event_title' => 'required'
     ];
+
+
+    protected static function booted()
+    {
+        static::deleted(function ($event) {
+            // Remove sitemap URL when event is deleted
+
+            SitemapHelper::removeRoute([
+                ["events/{$event->id}"]
+            ]);
+        });
+    }
 
 }

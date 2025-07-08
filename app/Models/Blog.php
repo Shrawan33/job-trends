@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\SitemapHelper;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedByUpdatedBy;
 use App\Traits\DocumentRelationship;
@@ -68,5 +69,16 @@ class Blog extends Model
         'createdBy' => 'required',
         'createdDate' => 'required',
     ];
+
+    protected static function booted()
+    {
+        static::deleted(function ($blog) {
+            // Remove sitemap URL when blog is deleted
+
+            SitemapHelper::removeRoute([
+                ["blog/{$blog->id}"]
+            ]);
+        });
+    }
 
 }
