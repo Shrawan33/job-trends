@@ -113,6 +113,7 @@ return [
     'your_guidebook_to_career_brilliance' => 'Your Guidebook to Career Brilliance! Uncover secrets to career growth, stay on top of industry trends, and empower your decisions to light the way to a brilliant career!',
     'find_your_perfect_job' => 'Beyond Job Portals. We Help You Land the Role',
     'finding_the_right_job' => 'We’re not just another job site. With deep employer ties and data-driven matching, we bring you roles others can’t — and we’re here to help you seize them.Ready to meet your next opportunity?',
+    'job_trendsIndia' => 'JobTrendsIndia: Your Career Strategy Partner, Not Just a Job Board',
     'email_verification' => 'Email Verification',
     'email_address_text' => 'A verification code has been sent to your email',
     'email_code_text' => 'Enter Email Code',
