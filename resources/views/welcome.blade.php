@@ -16,7 +16,11 @@
                     <h2 class="text-white font-weight-bold mb-10 mb-md-20">{{ trans('label.find_your_perfect_job') }}
                         {{-- {{ trans('label.waiting_here') }} --}}
                     </h2>
-                    <p class="text-white mb-40"><b>{{ trans('label.job_trendsIndia') }}</b><br>{{ trans('label.finding_the_right_job') }}</p>
+                    <p class="text-white mb-10"><b>{{ trans('label.job_trendsIndia') }}</b><br>{{ trans('label.finding_the_right_job') }}</p>
+
+                    <p class="text-white mb-30"><b>
+                        {{ trans('label.rediy_to_meet') }}
+                    </b></p>
                     @unlessrole('employer')
                         @include('components.search.quick_search')
                     @else
