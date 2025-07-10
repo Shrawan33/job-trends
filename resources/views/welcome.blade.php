@@ -14,9 +14,13 @@
             <div class="row">
                 <div class="col-md-8">
                     <h2 class="text-white font-weight-bold mb-10 mb-md-20">{{ trans('label.find_your_perfect_job') }}
-                        {{ trans('label.waiting_here') }}
+                        {{-- {{ trans('label.waiting_here') }} --}}
                     </h2>
-                    <p class="text-white mb-40">{{ trans('label.finding_the_right_job') }}</p>
+                    <p class="text-white mb-10"><b>{{ trans('label.job_trendsIndia') }}</b><br>{{ trans('label.finding_the_right_job') }}</p>
+
+                    <p class="text-white mb-30"><b>
+                        {{ trans('label.rediy_to_meet') }}
+                    </b></p>
                     @unlessrole('employer')
                         @include('components.search.quick_search')
                     @else
@@ -362,9 +366,11 @@
                     <div class="col-md-8 order-1 order-md-2 text-center text-md-left px-40 py-40 pr-xl-50">
                         <h2 class="text-white main_title mb-20">{{ __('label.get_your_resume_with_smart_builder') }}</h2>
                         <p class="text-white mb-10">{{ trans('label.did_you_know') }}</p><br>
-                        <p class="text-white mb-5">{{ trans('label.optimized') }}</p>
-                        <p class="text-white mb-5">{{ trans('label.job_specific') }}</p>
-                        <p class="text-white mb-15">{{ trans('label.human_written') }}</p>
+                        <ul class="text-white mb-15">
+                            <li class="mb-2"><b>{{ trans('label.optimized') }}</b></li>
+                            <li class="mb-2"><b>{{ trans('label.job_specific') }}</b></li>
+                            <li class="mb-2"><b>{{ trans('label.human_written') }}</b></li>
+                        </ul>
                         <p class="text-white mb-20">{{ trans('label.one_time') }}</p>
                         <p class="text-white mb-30">{{ trans('label.apply_smarter') }}</p>
                         <a href="{{ route('subscription.chatgpt-service-plan') }}"
