@@ -84,13 +84,23 @@
                             <img src="{{ asset('images/Frame 33531.png') }}" alt="banner_img" width="100%" class="d-none">
                             <div class="main_box_wraper">
                                 <div class="d-flex align-items-center justify-content-between box_header p-20 p-lg-25">
-                                    <h2 class="m-0">{{ trans('label.feed') }}</h2>
+                                    <h2 class="m-0 mr-30">{{ trans('label.feed') }}</h2>
 
-                                    @if (!empty($reviewed_users->count() > 0))
-                                        <a
-                                            href="{{ route('userReviews.feed') }}">{{ trans('label.home_page_label.view_all_btn') }}</a>
-                                    @endif
+                                    <div class=" mx-auto mt-3 mt-lg-0">
+                                        <h5 class="mb-2">{{ trans('label.honest_reflections') }}</h5>
+                                        <h6 class="mb-1">{{ trans('label.the_mirror') }}</h6>
+                                        <h6 class="mb-0">{{ trans('label.discover_feed') }}</h6>
+                                    </div>
                                 </div>
+
+
+                                <div class="d-flex align-items-center justify-content-between p-20 p-lg-25 border">
+                                    <div class=" mx-auto mt-3 mt-lg-0">
+                                        <h5 class="m-2">{{ trans('label.what_your_work') }}</h5>
+                                        <h6 class="m-2">{{ trans('label.get_reayl_feedback') }}</h6>
+                                    </div>
+                                </div>
+
                                 <div class="row mx-0">
 
                                     @if ($reviewed_users->count() > 0)
@@ -199,6 +209,14 @@
                                                     {{ trans('label.no_review_available') }}</p>
                                             </div>
                                         </div>
+                                    @endif
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between p-20 p-lg-25 border">
+                                    <h6 class="m-0">{{ trans('label.feed_get_first') }}</h6>
+
+                                    @if (!empty($reviewed_users->count() > 0))
+                                        <a
+                                            href="{{ route('userReviews.feed') }}">{{ trans('label.home_page_label.view_all_btn') }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -343,7 +361,12 @@
                     </div>
                     <div class="col-md-8 order-1 order-md-2 text-center text-md-left px-40 py-40 pr-xl-50">
                         <h2 class="text-white main_title mb-20">{{ __('label.get_your_resume_with_smart_builder') }}</h2>
-                        <p class="text-white mb-30">{{ trans('label.did_you_know') }}</p>
+                        <p class="text-white mb-10">{{ trans('label.did_you_know') }}</p><br>
+                        <p class="text-white mb-5">{{ trans('label.optimized') }}</p>
+                        <p class="text-white mb-5">{{ trans('label.job_specific') }}</p>
+                        <p class="text-white mb-15">{{ trans('label.human_written') }}</p>
+                        <p class="text-white mb-20">{{ trans('label.one_time') }}</p>
+                        <p class="text-white mb-30">{{ trans('label.apply_smarter') }}</p>
                         <a href="{{ route('subscription.chatgpt-service-plan') }}"
                             class="btn btn-secondary mx-auto ml-md-0">{{ __('label.get_started') }}
                             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12"
@@ -367,7 +390,7 @@
             </div>
         </div>
 
-        
+
     </div>
     @if (!Auth::check())
         <div class="offer_min_box">
