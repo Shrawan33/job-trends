@@ -303,7 +303,7 @@ return [
     'testimonials' => 'Testimonials',
     'home_page_label' => [
         'explore_job_trends' => 'Explore Job Trends !',
-        'category_section_title' => 'Explore Categories',
+        'category_section_title' => 'We\'re Building Your Future — Together',
         'category_section_main_title' => 'Get the most exciting jobs from all around the world and grow your',
         'career_fast_with_others' => 'career fast with others.',
         'view_all_btn' => 'View All',
@@ -314,7 +314,7 @@ return [
         'featured_school_title' => 'Selected Companies for you',
         'featured_job_popular_companies' => 'Check our featured jobs from popular companies.',
         'start_applying_now' => 'Start applying now.',
-        'featured_job' => 'Featured Job',
+        'featured_job' => 'Your Next Job Could Arrive Any Day',
         'urgent_job' => 'Urgent Job',
         'need_help_from_experts_leaders' => 'Need Help from Experts/Leaders?',
         'all_time_hires' => 'All Time Hires',
