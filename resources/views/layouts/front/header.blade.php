@@ -26,7 +26,7 @@
          <div class="container">
              <a class="navbar-brand py-0" href="{{ route('home.verfied') }}">
                  <img src="{{ asset('images/Logo.svg') }}" alt="logo" class="main_logo">
-                 <p class="text-black mt-1">Guiding Careers. Enriching Lives</p>
+                 <span style="display: block; margin-top: 4px; color: gray;  font-size: 18px;">Guiding Careers. Enriching Lives</span>
              </a>
 
              <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
