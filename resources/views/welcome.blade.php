@@ -13,6 +13,7 @@
             <img src="{{ asset('images/looking_job.png') }}" class="inner_img" width="100%">
             <div class="row">
                 <div class="col-md-8">
+
                     <h2 class="text-white font-weight-bold mb-10 mb-md-20">{{ trans('label.find_your_perfect_job') }}
                         {{-- {{ trans('label.waiting_here') }} --}}
                     </h2>
@@ -83,7 +84,7 @@
 
             <div class="container p-0">
                 <div class="looking_job_section position-relative p-30 p-lg-80 mb-lg-100 mb-40">
-                    <div class="row">
+                    <div class="row" style="margin-top: -170px;">
                         <div class="col-md-12 col-xl-8 pl-lg-0">
                             <img src="{{ asset('images/Frame 33531.png') }}" alt="banner_img" width="100%" class="d-none">
                             <div class="main_box_wraper">
@@ -237,9 +238,16 @@
         <div class="explore_cat_wraper">
             <div
                 class="d-flex align-items-center justify-content-md-between mb-30 mb-lg-60 title_wraper flex-wrap text-center text-md-left">
-                <h2 class="main_title mb-3 mb-md-0">{{ __('label.home_page_label.category_section_title') }}</h2>
-                <p class="mb-0 text-left">{{ trans('label.home_page_label.category_section_main_title') }}<br
-                        class="d-none d-lg-block"> {{ trans('label.home_page_label.career_fast_with_others') }}</p>
+                <h2 class="main_title mb-3 mb-md-0" style="font-size: 36px;">{{ __('label.home_page_label.category_section_title') }}</h2>
+                <p>
+                    JobTrendsIndia is growing fast, and so are the hidden opportunities we’re lining up for you.
+                    We’re actively onboarding companies that care about talent like yours — from startups to global brands.<br>
+
+                    We’re building a job space that sees you first — your skills, your story, your ambition.
+                    Choose your field, complete your profile, and let opportunities find you. No fluff. No bots. Just career-building done right.
+                </p>
+                {{-- <p class="mb-0 text-left">{{ trans('label.home_page_label.category_section_main_title') }}<br
+                        class="d-none d-lg-block"> {{ trans('label.home_page_label.career_fast_with_others') }}</p> --}}
             </div>
             {{-- @dD($events) --}}
             <div class="row category_main_wraper mb-30 mb-lg-70">
@@ -286,16 +294,45 @@
         <div class="feature_job_wraper pt-40 pb-10 py-lg-70 pt-lg-100">
             <div class="container">
                 <div
-                    class="d-flex align-items-center justify-content-md-between mb-30 mb-lg-60 title_wraper flex-wrap text-center text-md-left">
-                    <div>
-                        <h2 class="main_title mb-10">{{ __('label.home_page_label.featured_job') }}</h2>
-                        <p class="mb-lg-0 mb-22">{{ trans('label.home_page_label.featured_job_popular_companies') }} <span
-                                class="font-weight-bold">{{ trans('label.home_page_label.start_applying_now') }}</span>
-                        </p>
-                    </div>
-                    <a href="{{ route('search-jobs.index') }}"
-                        class="btn btn-primary mx-auto mr-md-0">{{ trans('label.view_all_jobs') }}</a>
-                </div>
+            class="d-flex align-items-center justify-content-between flex-wrap mb-30 mb-lg-60 title_wraper">
+
+            <!-- Title and Button Side-by-Side -->
+            <div class="d-flex align-items-center flex-wrap gap-3 justify-content-between w-100">
+                <h2 class="main_title mb-10 mb-md-0" style="font-size: 36px;">
+                    {{ __('label.home_page_label.featured_job') }}
+                </h2>
+
+                <a href="{{ route('search-jobs.index') }}"
+                class="btn btn-primary ml-md-4 mt-2 mt-md-0">
+                    {{ trans('label.view_all_jobs') }}
+                </a>
+            </div>
+
+            <!-- Subtext Content Below -->
+            <div class="mt-3 w-100">
+                <p>
+                    Before jobs go live, make sure you’re ready.<br>
+                    While we onboard top companies, your resume can already be working for you. Upload it once. We’ll align it, spotlight it, and show you where you fit in.<br>
+
+                    Want more interview calls?<br>
+
+                    • Start with our <span style="color: blue">Smart Resume Builder</span> to instantly match your resume to the right roles.<br>
+
+                    • Get honest insights through <span style="color: blue">HOOT</span> — peer feedback that sharpens your professional image.<br>
+
+                    • Or, hand over your job hunt stress with our <span style="color: blue">Career Boost Package</span> — we’ll streamline everything from resume to job alerts.<br>
+                </p>
+                <p style="font-weight: 700">A stronger profile beats 100 random applications. Let’s do this right — once and for all.</p>
+
+                <p class="mb-lg-0 mb-22">
+                    {{ trans('label.home_page_label.featured_job_popular_companies') }}
+                    <span class="font-weight-bold">
+                        {{ trans('label.home_page_label.start_applying_now') }}
+                    </span>
+                </p>
+            </div>
+        </div>
+
                 <div class="row related_job_wraper">
                     @foreach ($featured as $job)
                         @include('components.jobs.urgent')
