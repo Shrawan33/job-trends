@@ -478,7 +478,7 @@
             $(document).ready(function(){
                 setTimeout(function(){
                     $('#offer_modal').modal('show');
-                }, 15000); // 15000 milliseconds = 15 seconds
+                }, 30000); // 30000 milliseconds = 30 seconds
             });
         </script>
     @endif
