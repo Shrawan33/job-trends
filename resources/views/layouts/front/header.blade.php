@@ -23,11 +23,11 @@
     @endImpersonating
 @endrole
      <nav class="navbar fixed-top navbar-expand-lg py-20">
-         <div class="container">
-             <a class="navbar-brand py-0" href="{{ route('home.verfied') }}">
-                 <img src="{{ asset('images/Logo.svg') }}" alt="logo" class="main_logo">
-                 <span style="display: block; margin-top: 4px; color: gray;  font-size: 18px;">Guiding Careers. Enriching Lives</span>
-             </a>
+         <div class="container" style="flex-wrap: nowrap;">
+            <a class="navbar-brand py-0" href="{{ route('home.verfied') }}" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <img src="{{ asset('images/Logo.svg') }}" alt="logo" class="main_logo" style="margin-bottom: 4px;">
+                <span class="header-title" style="display: block; color: gray; ">Guiding Careers. Enriching Lives</span>
+            </a>
 
              <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,8 +44,7 @@
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                  {{-- <span class="navbar-toggler-icon"></span> --}}
-                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14"
-                     fill="none">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none" style="margin-right: -1px;">
                      <path d="M1 7H19M1 1H19M1 13H19" stroke="black" stroke-width="2" stroke-linecap="round"
                          stroke-linejoin="round" />
                  </svg>
@@ -512,8 +511,7 @@
                                                      stroke="black" stroke-width="1.5" stroke-linecap="round"
                                                      stroke-linejoin="round" />
                                              </svg>
-                                             {{ trans('label.packages') }}
-                                         </a>
+                                             {{ trans('label.packages') }}company
 
                                          @endrole
 
@@ -544,7 +542,7 @@
                                  href="{{ route('front.register', ['type' => 'jobseeker']) }}">{{ trans('label.register') }}</a>
                          </li>
                          <li class="nav-item mr-0">
-                             <a class="nav-link btn btn-black text-white" href="{{ route('login') }}">Sign In</a>
+                             <a class="nav-link btn btn-black text-white" style="text-wrap: nowrap;" href="{{ route('login') }}">Sign In</a>
                          </li>
                      </ul>
                      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">

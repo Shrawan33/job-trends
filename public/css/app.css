@@ -31375,10 +31375,16 @@ label[for=is_urgent] {
   margin-bottom: 0;
 }
 
+.header-title {
+    font-size: 10px;
+  }
 @media (min-width: 992px) {
   .popover {
     max-width: 800px;
     min-width: 390px;
+  }
+  .header-title {
+    font-size: 15px;
   }
 }
 
