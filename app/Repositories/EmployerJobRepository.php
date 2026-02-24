@@ -10,7 +10,7 @@ use MeiliSearch\Endpoints\Indexes;
  * Class EmployerJobRepository
  * @package App\Repositories
  * @version January 22, 2021, 11:24 am UTC
-*/
+ */
 
 class EmployerJobRepository extends BaseRepository
 {
@@ -123,133 +123,138 @@ class EmployerJobRepository extends BaseRepository
         }
         $searchString = '';
         if ($item['state_id'] ?? null) {
-            $searchString.= "state_id=".$item['state_id'];
+            $searchString .= "state_id=" . $item['state_id'];
         }
         $filterArray = [];
 
-        return $results = EmployerJob::search($query, function(Indexes $meilisearch, $query, $options) use($item, $slug){
-            if ($item['job_type_id'] ?? null) {
-                $filterArray[] =  "job_type_id=".$item['job_type_id'];
-            }
-
-            if ($item['specialization_id'] ?? null) {
-                $filterArray[] =  "specialization_id=".$item['specialization_id'];
-            }
-            if ($item['is_featured'] ?? 0){
-                $filterArray[] =  "is_featured=".$item['is_featured'];
-            }
-
-            if ($item['is_urgent'] ?? 0){
-                $filterArray[] =  "is_urgent=".$item['is_urgent'];
-            }
-
-            if ($item['state_id'] ?? null) {
-                $filterArray[] =  "state_id=".$item['state_id'];
-            }
-
-            $filterArray[] = "approval_status=1";
-
-            if (isset($slug) && $slug != null) {
-                $filterArray[] =  "category_slug=".$slug;
-            }
-
-            if ($item['location_id'] ?? null) {
-                $filterArray[] =  "location_id=".$item['location_id'];
-            }
-
-            if ($item['category_id'] ?? null) {
-                $categories = [];
-                foreach ($item['category_id'] as $key => $value) {
-                   $categories[] = 'category_id = '.$value;
-                }
-                $category_string = implode(' OR ', $categories);
-                $filterArray[] =  '('.$category_string.')';
-            }
-
-            if ($item['experience_id'] ?? null) {
-                $experiences = [];
-
-                foreach ($item['experience_id'] as $key => $value) {
-                   $experiences[] = 'experience_id = '.$value;
+        try {
+            return $results = EmployerJob::search($query, function (Indexes $meilisearch, $query, $options) use ($item, $slug) {
+                if ($item['job_type_id'] ?? null) {
+                    $filterArray[] =  "job_type_id=" . $item['job_type_id'];
                 }
 
-                $experience_string = implode(' OR ', $experiences);
-                $filterArray[] =  '('.$experience_string.')';
-            }
+                if ($item['specialization_id'] ?? null) {
+                    $filterArray[] =  "specialization_id=" . $item['specialization_id'];
+                }
+                if ($item['is_featured'] ?? 0) {
+                    $filterArray[] =  "is_featured=" . $item['is_featured'];
+                }
 
-            if ($item['work_type_id'] ?? null) {
-                $types = implode(',', $item['work_type_id']);
-                $job_type_string = "work_type_ids IN [".$types."]";
-                $filterArray[] =  '('.$job_type_string.')';
-            }
+                if ($item['is_urgent'] ?? 0) {
+                    $filterArray[] =  "is_urgent=" . $item['is_urgent'];
+                }
 
-            if ($item['qualification_id'] ?? null) {
-                $qualifications = implode(',', $item['qualification_id']);;
+                if ($item['state_id'] ?? null) {
+                    $filterArray[] =  "state_id=" . $item['state_id'];
+                }
 
-                // foreach ($item['qualification_id'] as $key => $value) {
-                //    $qualifications[] = 'qualification_id = '.$value;
+                $filterArray[] = "approval_status=1";
+
+                if (isset($slug) && $slug != null) {
+                    $filterArray[] =  "category_slug=" . $slug;
+                }
+
+                if ($item['location_id'] ?? null) {
+                    $filterArray[] =  "location_id=" . $item['location_id'];
+                }
+
+                if ($item['category_id'] ?? null) {
+                    $categories = [];
+                    foreach ($item['category_id'] as $key => $value) {
+                        $categories[] = 'category_id = ' . $value;
+                    }
+                    $category_string = implode(' OR ', $categories);
+                    $filterArray[] =  '(' . $category_string . ')';
+                }
+
+                if ($item['experience_id'] ?? null) {
+                    $experiences = [];
+
+                    foreach ($item['experience_id'] as $key => $value) {
+                        $experiences[] = 'experience_id = ' . $value;
+                    }
+
+                    $experience_string = implode(' OR ', $experiences);
+                    $filterArray[] =  '(' . $experience_string . ')';
+                }
+
+                if ($item['work_type_id'] ?? null) {
+                    $types = implode(',', $item['work_type_id']);
+                    $job_type_string = "work_type_ids IN [" . $types . "]";
+                    $filterArray[] =  '(' . $job_type_string . ')';
+                }
+
+                if ($item['qualification_id'] ?? null) {
+                    $qualifications = implode(',', $item['qualification_id']);;
+
+                    // foreach ($item['qualification_id'] as $key => $value) {
+                    //    $qualifications[] = 'qualification_id = '.$value;
+                    // }
+                    $qualification_string = "qualification_ids IN [" . $qualifications . "]";
+                    $filterArray[] =  '(' . $qualification_string . ')';
+                }
+
+                if ($item['skill_id'] ?? null) {
+                    $skills = implode(',', $item['skill_id']);;
+
+                    // foreach ($item['qualification_id'] as $key => $value) {
+                    //    $qualifications[] = 'qualification_id = '.$value;
+                    // }
+                    $skill_string = "skill_ids IN [" . $skills . "]";
+                    $filterArray[] =  '(' . $skill_string . ')';
+                }
+                // if ($item['specialization_id'] ?? null) {
+                //     $specializations = implode(',', $item['specialization_id']);;
+
+                //     // foreach ($item['qualification_id'] as $key => $value) {
+                //     //    $qualifications[] = 'qualification_id = '.$value;
+                //     // }
+                //     $specialization_string = "specialization_ids IN [".$specializations."]";
+                //     $filterArray[] =  '('.$specialization_string.')';
                 // }
-                $qualification_string = "qualification_ids IN [".$qualifications."]";
-                $filterArray[] =  '('.$qualification_string.')';
-            }
-
-            if ($item['skill_id'] ?? null) {
-                $skills = implode(',', $item['skill_id']);;
-
-                // foreach ($item['qualification_id'] as $key => $value) {
-                //    $qualifications[] = 'qualification_id = '.$value;
-                // }
-                $skill_string = "skill_ids IN [".$skills."]";
-                $filterArray[] =  '('.$skill_string.')';
-            }
-            // if ($item['specialization_id'] ?? null) {
-            //     $specializations = implode(',', $item['specialization_id']);;
-
-            //     // foreach ($item['qualification_id'] as $key => $value) {
-            //     //    $qualifications[] = 'qualification_id = '.$value;
-            //     // }
-            //     $specialization_string = "specialization_ids IN [".$specializations."]";
-            //     $filterArray[] =  '('.$specialization_string.')';
-            // }
-            if ($item['salary_type_id'] ?? null) {
-                $salary_types = [];
-                foreach ($item['salary_type_id'] as $key => $value) {
-                   $salary_types[] = 'salary_type_id = '.$value;
+                if ($item['salary_type_id'] ?? null) {
+                    $salary_types = [];
+                    foreach ($item['salary_type_id'] as $key => $value) {
+                        $salary_types[] = 'salary_type_id = ' . $value;
+                    }
+                    $salary_type_string = implode(' OR ', $salary_types);
+                    $filterArray[] =  '(' . $salary_type_string . ')';
                 }
-                $salary_type_string = implode(' OR ', $salary_types);
-                $filterArray[] =  '('.$salary_type_string.')';
-            }
 
-            if ($item['salary_id'] ?? null) {
-                $salary = [];
-                foreach ($item['salary_id'] as $key => $value) {
-                   $salary[] = 'salary_id = '.$value;
+                if ($item['salary_id'] ?? null) {
+                    $salary = [];
+                    foreach ($item['salary_id'] as $key => $value) {
+                        $salary[] = 'salary_id = ' . $value;
+                    }
+                    $salary_string = implode(' OR ', $salary);
+                    $filterArray[] =  '(' . $salary_string . ')';
                 }
-                $salary_string = implode(' OR ', $salary);
-                $filterArray[] =  '('.$salary_string.')';
-            }
 
-            if (!empty($filterArray)) {
-                $filter_string = implode(' AND ', $filterArray);
-                //dd($filter_string);
-                $options['filter'] = $filter_string;
-            }
+                if (!empty($filterArray)) {
+                    $filter_string = implode(' AND ', $filterArray);
+                    //dd($filter_string);
+                    $options['filter'] = $filter_string;
+                }
 
-            if ($item['sort_by'] ?? null) {
-                if ($item['sort_by'] == 'oldest') {
-                    $options['sort'] = ["created_at:asc"];
+                if ($item['sort_by'] ?? null) {
+                    if ($item['sort_by'] == 'oldest') {
+                        $options['sort'] = ["created_at:asc"];
+                    } else {
+                        $options['sort'] = ["created_at:desc"];
+                    }
                 } else {
                     $options['sort'] = ["created_at:desc"];
                 }
-            } else {
-                $options['sort'] = ["created_at:desc"];
-            }
 
 
-            $options['attributesToHighlight'] = ["title"];
-            //dd($options);
-            return $meilisearch->search($query, $options);
-        })->paginate(config('constants.pagination.page_no'));
+                $options['attributesToHighlight'] = ["title"];
+                //dd($options);
+                return $meilisearch->search($query, $options);
+            })->paginate(config('constants.pagination.page_no'));
+        } catch (\Exception $e) {
+            // Fallback to database search when MeiliSearch is not available
+            return $this->fallbackDatabaseSearch($item, $slug);
+        }
 
 
         // $query = $this->allQuery();
@@ -332,5 +337,114 @@ class EmployerJobRepository extends BaseRepository
         }
 
         return $data->all();
+    }
+
+    /**
+     * Fallback database search when MeiliSearch is not available
+     */
+    private function fallbackDatabaseSearch(array $item, $slug = '')
+    {
+        $query = $this->allQuery();
+
+        // Add relationships
+        $query->with(['category', 'location', 'state', 'experience', 'coreSkills', 'coreQualifications', 'coreWorktypes', 'createdByUser']);
+
+        // Basic approval filter
+        $query->where('approval_status', 1);
+
+        // Category filter
+        if (isset($slug) && $slug != null) {
+            $query->whereHas('category', function ($q) use ($slug) {
+                $q->where('slug', $slug);
+            });
+        }
+
+        // Keyword search
+        if ($item['keyword'] ?? null) {
+            $query->where(function ($q) use ($item) {
+                $q->where('title', 'LIKE', "%{$item['keyword']}%")
+                    ->orWhere('description', 'LIKE', "%{$item['keyword']}%")
+                    ->orWhere('job_number', 'LIKE', "%{$item['keyword']}%");
+            });
+        }
+
+        // Location filter
+        if ($item['location_id'] ?? null) {
+            $query->where('location_id', $item['location_id']);
+        }
+
+        // State filter
+        if ($item['state_id'] ?? null) {
+            $query->where('state_id', $item['state_id']);
+        }
+
+        // Category filter
+        if ($item['category_id'] ?? null) {
+            $query->whereIn('category_id', $item['category_id']);
+        }
+
+        // Experience filter
+        if ($item['experience_id'] ?? null) {
+            $query->whereIn('experience_id', $item['experience_id']);
+        }
+
+        // Work type filter
+        if ($item['work_type_id'] ?? null) {
+            $query->whereHas('coreWorktypes', function ($q) use ($item) {
+                $q->whereIn('work_type_id', $item['work_type_id']);
+            });
+        }
+
+        // Skill filter
+        if ($item['skill_id'] ?? null) {
+            $query->whereHas('coreSkills', function ($q) use ($item) {
+                $q->whereIn('skill_id', $item['skill_id']);
+            });
+        }
+
+        // Qualification filter
+        if ($item['qualification_id'] ?? null) {
+            $query->whereHas('coreQualifications', function ($q) use ($item) {
+                $q->whereIn('qualification_id', $item['qualification_id']);
+            });
+        }
+
+        // Salary type filter
+        if ($item['salary_type_id'] ?? null) {
+            $query->whereIn('salary_type_id', $item['salary_type_id']);
+        }
+
+        // Salary filter
+        if ($item['salary_id'] ?? null) {
+            $query->whereIn('salary_id', $item['salary_id']);
+        }
+
+        // Job type filter
+        if ($item['job_type_id'] ?? null) {
+            $query->where('job_type_id', $item['job_type_id']);
+        }
+
+        // Featured filter
+        if ($item['is_featured'] ?? 0) {
+            $query->where('is_featured', $item['is_featured']);
+        }
+
+        // Urgent filter
+        if ($item['is_urgent'] ?? 0) {
+            $query->where('is_urgent', $item['is_urgent']);
+        }
+
+        // Sorting
+        if ($item['sort_by'] ?? null) {
+            if ($item['sort_by'] == 'oldest') {
+                $query->orderBy('created_at', 'asc');
+            } else {
+                $query->orderBy('created_at', 'desc');
+            }
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        return $query->paginate(config('constants.pagination.page_no'));
     }
 }
